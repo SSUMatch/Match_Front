@@ -1,0 +1,21 @@
+const Color = {
+  Text: "#656565",
+  MainColor: "#5D5A88",
+  MainLight: "#D4D2E3",
+  Gray10: "#F0F0F0",
+  Gray20: "#DFDFDF",
+  Gray30: "#C2C1C1",
+  Gray50: "#999797",
+  Gray70: "#707070",
+  Gray75: "#555",
+  Gray80: "#414141",
+  Gray90: "#202D37",
+  MainBlack: "#252525",
+  TrueBlack: "#000000",
+  TrueWhite: "#FFFFFF",
+  BGgray: "#FCFCFC",
+  Applying: "#5AD2FF",
+  Ongoing: "#FF8C8C",
+  Finish: "#DCDCDC",
+} as const;
+export default Color;
