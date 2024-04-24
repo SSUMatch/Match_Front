@@ -9,7 +9,7 @@ function Header() {
       <H.RightContainer>
         <H.RowContainer>
           <H.LogoWrap>
-            {/* <HeaderIcon onClick={() => navigate("/")} /> */}
+            SSU Match{/* <HeaderIcon onClick={() => navigate("/")} /> */}
           </H.LogoWrap>
           <H.Gap>
             <LoggedOut />

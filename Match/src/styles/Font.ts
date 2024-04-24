@@ -1,5 +1,6 @@
 const Font = {
   SIZE: {
+    TITLE1: "3rem",
     TITLE3: "2rem",
     BODY1: "1.8rem",
     BODY2: "1.6rem",

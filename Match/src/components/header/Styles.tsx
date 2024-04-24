@@ -20,6 +20,9 @@ export const LogoWrap = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
+  color: ${Color.MainBlack};
+  font-size: ${Font.SIZE.TITLE1};
+  font-weight: ${Font.WEIGHT.SEMIBOLD};
 `;
 
 export const BtnWrap = styled.div`
