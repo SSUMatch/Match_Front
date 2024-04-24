@@ -1,4 +1,4 @@
-const FONT = {
+const Font = {
   SIZE: {
     TITLE3: "2rem",
     BODY1: "1.8rem",
@@ -15,4 +15,4 @@ const FONT = {
   },
 } as const;
 
-export default FONT;
+export default Font;

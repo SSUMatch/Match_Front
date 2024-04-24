@@ -1,18 +1,33 @@
 import { Global, css } from "@emotion/react";
-import tw, { theme, GlobalStyles as BaseStyles } from "twin.macro";
 
-const customStyles = css({
-  body: {
-    WebkitTapHighlightColor: theme`colors.magenta.500`,
-    ...tw`antialiased`,
-  },
-});
-function GlobalStyles() {
-  return (
-    <>
-      <BaseStyles />
-      <Global styles={customStyles} />
-    </>
-  );
+export const supportScreenSize = 1280;
+
+export const globalStyles = css`
+  html {
+    font-size: 62.5%;
+
+    @media all and (max-width: ${supportScreenSize}px) {
+      font-size: 31.25%;
+    }
+  }
+
+  body {
+    background: white;
+    margin: 0;
+    padding: 0;
+    font-family:
+      "Pretendard",
+      -apple-system,
+      sans-serif,
+      Roboto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+function GlobalStyle() {
+  return <Global styles={globalStyles} />;
 }
-export default GlobalStyles;
+
+export default GlobalStyle;
