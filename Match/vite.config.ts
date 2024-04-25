@@ -29,6 +29,8 @@ export default defineConfig({
   ],
   server: {
     port: 3000,
+    strictPort: true, // 포트가 사용 중일 때 다른 포트 사용을 방지
+    cors: true, // CORS를 활성화하여 다른 도메인의 리소스 접근을 허용
   },
   resolve: {
     alias: {
