@@ -8,28 +8,41 @@
     "airbnb/hooks",
     "airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:storybook/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
-      "jsx" : true
+      "jsx": true
     },
     "ecmaVersion": "latest",
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
   "plugins": [
-    "react", "@typescript-eslint", "prettier"
+    "react",
+    "@typescript-eslint",
+    "prettier"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "import/extensions": ["off"],
+    "import/extensions": [
+      "off"
+    ],
     "spaced-comment": "error",
-    "quotes": ["error", "single"],
+    "quotes": [
+      "error",
+      "single"
+    ],
     "no-duplicate-imports": "error",
     "@typescript-eslint/no-empty-function": "off",
-    "func-style": ["error", "expression", { "allowArrowFunctions": true }]
-
+    "func-style": [
+      "error",
+      "expression",
+      {
+        "allowArrowFunctions": true
+      }
+    ]
   }
 }
