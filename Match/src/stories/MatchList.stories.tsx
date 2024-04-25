@@ -1,5 +1,5 @@
 import { Story, Meta } from "@storybook/react";
-import MatchList from "../components/match/matchlist/MatchLIst.tsx";
+import MatchList from "../components/match/matchlist/MatchList.tsx";
 import { MatchListProps } from "../components/match/matchlist/MatchListProps";
 
 export default {
