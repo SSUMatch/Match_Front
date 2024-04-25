@@ -1,5 +1,5 @@
 export interface MatchListProps {
-  label: string;
-  name: string;
-  period: string;
+  time: string;
+  location: string;
+  title: string;
 }

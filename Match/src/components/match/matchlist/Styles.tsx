@@ -16,40 +16,44 @@ export const MatchItem = styled.li`
   //padding: 10px;
 `;
 
-export const LabelWrap = styled.div`
+export const TimeWrap = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 17.6rem;
   height: 14rem;
-`;
-
-export const TitleWrap = styled.div`
-  display: flex;
   align-items: center;
   justify-content: center;
-  width: 33.2rem;
-  height: 14rem;
   font-size: ${Font.SIZE.TITLE3};
   font-weight: ${Font.WEIGHT.BOLD};
   font-family: "Pretendard", sans-serif;
 `;
 
-export const PeriodWrap = styled.div`
+export const TitleWrap = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  width: 29.4rem;
+  width: 80%;
   height: 14rem;
-  font-size: ${Font.SIZE.TITLE3};
-  font-weight: ${Font.WEIGHT.REGULAR};
-  font-family: "Pretendard", sans-serif;
 `;
 
-export const BtnWrap = styled.div`
+export const LocationWrap = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 20rem;
-  height: 14rem;
+  width: auto;
+  height: 8rem;
+  font-size: ${Font.SIZE.TITLE3};
+  font-weight: ${Font.WEIGHT.SEMIBOLD};
+  font-family: "Pretendard", sans-serif;
+  padding-top: 2rem;
+`;
+
+export const TextWrap = styled.div`
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 6rem;
+  font-size: ${Font.SIZE.BODY2};
+  font-weight: ${Font.WEIGHT.REGULAR};
+  font-family: "Pretendard", sans-serif;
+  padding-bottom: 2rem;
 `;
