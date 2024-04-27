@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import Font from "../../../styles/Font";
-import Color from "../../../styles/Color";
+import styled from '@emotion/styled';
+import Font from '../../../styles/Font';
+import Color from '../../../styles/Color';
 
 export const ListContainer = styled.ul`
   list-style-type: none;
@@ -24,7 +24,7 @@ export const TimeWrap = styled.div`
   justify-content: center;
   font-size: ${Font.SIZE.TITLE3};
   font-weight: ${Font.WEIGHT.BOLD};
-  font-family: "Pretendard", sans-serif;
+  font-family: 'Pretendard', sans-serif;
 `;
 
 export const TitleWrap = styled.div`
@@ -43,7 +43,7 @@ export const LocationWrap = styled.div`
   height: 8rem;
   font-size: ${Font.SIZE.TITLE3};
   font-weight: ${Font.WEIGHT.SEMIBOLD};
-  font-family: "Pretendard", sans-serif;
+  font-family: 'Pretendard', sans-serif;
   padding-top: 2rem;
 `;
 
@@ -54,6 +54,6 @@ export const TextWrap = styled.div`
   height: 6rem;
   font-size: ${Font.SIZE.BODY2};
   font-weight: ${Font.WEIGHT.REGULAR};
-  font-family: "Pretendard", sans-serif;
+  font-family: 'Pretendard', sans-serif;
   padding-bottom: 2rem;
 `;

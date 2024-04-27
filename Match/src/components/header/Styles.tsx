@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import Font from "../../styles/Font";
-import Color from "../../styles/Color";
+import styled from '@emotion/styled';
+import Font from '../../styles/Font';
+import Color from '../../styles/Color';
 
 export const Header = styled.div`
   display: flex;

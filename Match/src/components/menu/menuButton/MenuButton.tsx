@@ -1,12 +1,8 @@
-import React from "react";
-import * as S from "./Styles";
-import { MenuButtonProps } from "./MenuButtonProps";
+import React from 'react';
+import * as S from './Styles';
+import {MenuButtonProps} from './MenuButtonProps';
 
-const MenuButton: React.FC<MenuButtonProps> = ({
-  label,
-  selected,
-  onClick,
-}) => {
+const MenuButton: React.FC<MenuButtonProps> = ({label, selected, onClick}) => {
   return (
     <>
       {selected ? (

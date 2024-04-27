@@ -1,7 +1,7 @@
-import { DefaultContainer } from "./Styles";
+import {DefaultContainer} from './Styles';
 
-function NearBy() {
+const NearBy = () => {
   return <DefaultContainer />;
-}
+};
 
 export default NearBy;

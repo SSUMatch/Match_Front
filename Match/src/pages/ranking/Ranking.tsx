@@ -1,7 +1,7 @@
-import { DefaultContainer } from "./Styles";
+import {DefaultContainer} from './Styles';
 
-function Ranking() {
+const Ranking = () => {
   return <DefaultContainer />;
-}
+};
 
 export default Ranking;

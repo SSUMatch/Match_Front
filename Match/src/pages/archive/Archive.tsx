@@ -1,7 +1,7 @@
-import { DefaultContainer } from "./Styles";
+import {DefaultContainer} from './Styles';
 
-function Archive() {
+const Archive = () => {
   return <DefaultContainer />;
-}
+};
 
 export default Archive;

@@ -1,10 +1,10 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 // import { supportScreenSize } from "../styles/GlobalStyle.tsx";
-import Header from "../components/header/Header.tsx";
-import Footer from "../components/footer/Footer.tsx";
-import WebContent from "../components/content/Content.tsx";
+import Header from '../components/header/Header.tsx';
+import Footer from '../components/footer/Footer.tsx';
+import WebContent from '../components/content/Content.tsx';
 
-function DefaultLayout() {
+const DefaultLayout = () => {
   return (
     <Root>
       <Header />
@@ -12,7 +12,7 @@ function DefaultLayout() {
       <Footer />
     </Root>
   );
-}
+};
 const supportScreenSize = 1280;
 
 const Root = styled.div`

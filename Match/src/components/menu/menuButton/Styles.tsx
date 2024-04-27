@@ -1,6 +1,6 @@
-import styled from "@emotion/styled";
-import Color from "../../../styles/Color.ts";
-import Font from "../../../styles/Font";
+import styled from '@emotion/styled';
+import Color from '../../../styles/Color.ts';
+import Font from '../../../styles/Font';
 
 export const StyledBtn = styled.div`
   width: 9.5rem;

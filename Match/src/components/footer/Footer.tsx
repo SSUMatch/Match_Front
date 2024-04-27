@@ -1,7 +1,7 @@
-import * as F from "./Styles.tsx";
+import * as F from './Styles.tsx';
 // import logo from "../../assets/icons/header_logo.svg";
 
-function Footer() {
+const Footer = () => {
   return (
     <F.Footer>
       <F.Box>
@@ -15,5 +15,5 @@ function Footer() {
       </F.TextWrapper>
     </F.Footer>
   );
-}
+};
 export default Footer;

@@ -1,7 +1,7 @@
-import { DefaultContainer } from "./Styles";
+import {DefaultContainer} from './Styles';
 
-function Favorites() {
+const Favorites = () => {
   return <DefaultContainer />;
-}
+};
 
 export default Favorites;

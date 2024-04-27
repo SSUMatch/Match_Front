@@ -1,4 +1,4 @@
-import { Global, css } from "@emotion/react";
+import {Global, css} from '@emotion/react';
 
 export const supportScreenSize = 1280;
 
@@ -16,7 +16,7 @@ export const globalStyles = css`
     margin: 0;
     padding: 0;
     font-family:
-      "Pretendard",
+      'Pretendard',
       -apple-system,
       sans-serif,
       Roboto;
@@ -26,8 +26,8 @@ export const globalStyles = css`
   }
 `;
 
-function GlobalStyle() {
+const GlobalStyle = () => {
   return <Global styles={globalStyles} />;
-}
+};
 
 export default GlobalStyle;

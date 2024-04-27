@@ -1,12 +1,12 @@
-import { Story, Meta } from "@storybook/react";
-import SearchBar from "../components/searchbar/SearchBar";
+import {Story, Meta} from '@storybook/react';
+import SearchBar from '../components/searchbar/SearchBar';
 
 export default {
-  title: "Components/SearchBar",
+  title: 'Components/SearchBar',
   component: SearchBar,
 } as Meta;
 
-const Template: Story = (args) => <SearchBar {...args} />;
+const Template: Story = args => <SearchBar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {};
