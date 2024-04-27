@@ -1,3 +1,3 @@
 export interface MatchStatusProps {
-  status: "APPLYING" | "ONGOING" | "FINISH";
+  status: 'APPLYING' | 'ONGOING' | 'FINISH';
 }

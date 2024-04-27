@@ -1,5 +1,7 @@
 export interface MatchListProps {
+  matchId: number;
   time: string;
-  location: string;
-  title: string;
+  name: string;
+  type: string;
+  status: string;
 }
