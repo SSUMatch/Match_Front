@@ -11,7 +11,7 @@ const MatchList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://43.203.88.200/match', {
+        const response = await axios.get('http://13.209.18.210/match', {
           params: {
             page: 0,
             take: 2,
