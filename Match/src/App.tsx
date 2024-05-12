@@ -6,10 +6,11 @@ import Favorites from '@/pages/favorites/Favorites.tsx';
 import Archive from '@/pages/archive/Archive.tsx';
 import Ranking from '@/pages/ranking/Ranking.tsx';
 import NearBy from '@/pages/nearBy/NearBy.tsx';
+import DefaultLayout from './layout/DefaultLayout.tsx';
 // import { AuthProvider } from "./components/auth/AuthProvider.tsx";
 
 const loading = <div>화면 로딩중...</div>;
-const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'));
+// const DefaultLayout = React.lazy(() => import('./layout/DefaultLayout'));
 // const Home = React.lazy(() => import("./pages/home/Home"));
 // const Favorites = React.lazy(() => import("./pages/favorites/Favorites"));
 // const Archive = React.lazy(() => import("./pages/archive/Archive"));
@@ -22,7 +23,7 @@ const App = () => {
     <BrowserRouter>
       <Suspense fallback={loading}>
         <Routes>
-          <Route path='/' element={<DefaultLayout />}>
+          <Route path='*' element={<DefaultLayout />}>
             <Route index element={<Home />} />
             <Route path='favorites' element={<Favorites />} />
             <Route path='archive' element={<Archive />} />
