@@ -1,20 +1,23 @@
 import React from 'react';
+import BannerImage from '@/assets/svg/bannerImage.svg?react';
 
-interface ImageBannerProps {
-  imageUrl: string;
-}
-const ImageBanner: React.FC<ImageBannerProps> = ({imageUrl}) => {
+const ImageBanner: React.FC = () => {
   return (
     <div
-      style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
     >
-      <img
-        src={imageUrl}
-        alt='Banner Image'
-        style={{maxWidth: '100%', height: 'auto'}}
+      <BannerImage
+        style={{
+          maxWidth: '100%',
+          height: '38rem',
+          borderRadius: '2rem',
+        }}
       />
     </div>
   );
 };
-
 export default ImageBanner;
