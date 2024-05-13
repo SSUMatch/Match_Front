@@ -2,7 +2,6 @@ import * as path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
-import svgrPlugin from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -27,10 +26,9 @@ export default defineConfig({
         ],
       },
     }),
-    svgr(),
-    svgrPlugin({
+    svgr({
       svgrOptions: {
-        // This is where you can pass options to SVGR
+        // SVGR의 옵션은 여기에 설정
         icon: true,
       },
     }),
