@@ -4,11 +4,12 @@ import DropDown from '@/components/dropdown/DropDown';
 import MatchData from '@/components/dropdown/matchdata/MatchData.tsx';
 import MatchInfo from '@/components/dropdown/matchinfo/MatchInfo.tsx';
 
+const bannerImageUrl = 'src/assets/bannerImage.png';
 const MatchDetail = () => {
   return (
     <div>
       <H.DefaultContainer>
-        <ImageBanner />
+        <ImageBanner imgUrl={bannerImageUrl} />
         <H.ContentContainer>
           <H.DropDownContainer>
             <DropDown label='매치 데이터'>

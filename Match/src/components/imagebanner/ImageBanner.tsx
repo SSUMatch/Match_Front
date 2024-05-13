@@ -1,7 +1,11 @@
+// ImageBanner.js
 import React from 'react';
-import BannerImage from '@/assets/svg/bannerImage.svg?react';
 
-const ImageBanner: React.FC = () => {
+interface ImageBannerProps {
+  imgUrl: string;
+}
+
+const ImageBanner: React.FC<ImageBannerProps> = ({imgUrl}) => {
   return (
     <div
       style={{
@@ -10,7 +14,9 @@ const ImageBanner: React.FC = () => {
         alignItems: 'center',
       }}
     >
-      <BannerImage
+      <img
+        src={imgUrl}
+        alt='Banner Image'
         style={{
           maxWidth: '100%',
           height: '38rem',
@@ -20,4 +26,5 @@ const ImageBanner: React.FC = () => {
     </div>
   );
 };
+
 export default ImageBanner;
