@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import React, {Suspense} from 'react';
+import {Suspense} from 'react';
 import './App.css';
 import Home from '@/pages/home/Home.tsx';
 import Favorites from '@/pages/favorites/Favorites.tsx';
