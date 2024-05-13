@@ -1,11 +1,11 @@
 import React from 'react';
 import * as S from './Styles';
 
-interface DropdownMenuProps {
+interface MatchDataProps {
   expect: string;
 }
 
-const DropdownMenu: React.FC<DropdownMenuProps> = ({expect}) => {
+const MatchData: React.FC<MatchDataProps> = ({expect}) => {
   return (
     <div
       style={{
@@ -59,4 +59,4 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({expect}) => {
   );
 };
 
-export default DropdownMenu;
+export default MatchData;
