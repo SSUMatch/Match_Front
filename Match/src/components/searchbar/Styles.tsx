@@ -12,12 +12,13 @@ export const Container = styled.div`
 `;
 
 export const SearchBarContainer = styled.div`
+  margin-top: 3rem;
   width: 100%;
-  height: 5rem;
+  height: 6rem;
   display: flex;
   flex-direction: row;
   background-color: #fff;
-  padding-left: 3rem;
+  //padding-left: 3rem;
   justify-content: flex-start;
   align-items: center;
   color: ${Color.MainColor};
@@ -26,11 +27,12 @@ export const SearchBarContainer = styled.div`
 `;
 
 export const Input = styled.input`
+  margin-left: 3rem;
   flex: 1;
   background: transparent;
   border: none;
   outline: none;
-  font-size: ${Font.SIZE.BODY3};
+  font-size: ${Font.SIZE.BODY1};
   font-weight: ${Font.WEIGHT.REGULAR};
   height: 3rem;
   &::placeholder {

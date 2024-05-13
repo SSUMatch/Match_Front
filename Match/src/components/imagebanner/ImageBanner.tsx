@@ -10,6 +10,7 @@ const ImageBanner: React.FC<ImageBannerProps> = ({imgUrl}) => {
     <div
       style={{
         display: 'flex',
+        width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
       }}
