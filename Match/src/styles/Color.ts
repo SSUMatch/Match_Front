@@ -17,5 +17,8 @@ const Color = {
   Applying: '#5AD2FF',
   Ongoing: '#FF8C8C',
   Finish: '#DCDCDC',
+  BarBG: '#F2F5F7',
+  Bar: '#FED771',
+  Blue: '#2177FF',
 } as const;
 export default Color;
