@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import * as S from './Styles';
+import Down from '@/assets/svg/down.svg?react';
 
 interface DropdownProps {
   label: string;
@@ -13,7 +14,18 @@ const Dropdown: React.FC<DropdownProps> = ({label, children}) => {
 
   return (
     <div>
-      <S.StyledButton onClick={toggleDropdown}>{label}</S.StyledButton>
+      <S.StyledButton onClick={toggleDropdown}>
+        <S.LabelContainer>{label}</S.LabelContainer>
+        <Down
+          style={{
+            // position: 'absolute',
+            // right: '16px',
+            marginLeft: 'auto',
+            width: '25px',
+            height: '12px',
+          }}
+        />
+      </S.StyledButton>
       {isOpen && <S.ContentArea>{children}</S.ContentArea>}
     </div>
   );

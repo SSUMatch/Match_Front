@@ -1,22 +1,16 @@
-// Dropdown.stories.tsx
-import React from 'react';
-import {Meta, Story} from '@storybook/react';
-import Dropdown from '@/components/dropdown/DropDown.tsx';
+import {Meta, StoryObj} from '@storybook/react';
+import DropDown from '@/components/dropdown/DropDown.tsx';
 
-export default {
+const meta = {
   title: 'Components/Dropdown',
-  component: Dropdown,
-} as Meta;
+  component: DropDown,
+} satisfies Meta<typeof DropDown>;
 
-const Template: Story<typeof Dropdown> = args => <Dropdown {...args} />;
+export default meta;
+type Story = StoryObj<typeof meta>;
 
-export const Default = Template.bind({});
-Default.args = {
-  label: 'Click to Toggle',
-  children: (
-    <div>
-      Here is some dropdown content. It could be another component or just a
-      simple div.
-    </div>
-  ),
+export const Standard: Story = {
+  args: {
+    label: '안녕하세요?',
+  },
 };

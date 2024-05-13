@@ -3,13 +3,14 @@ import Font from '@/styles/Font';
 import Color from '@/styles/Color';
 
 export const StyledButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
   width: 63rem;
   height: 10rem;
   background-color: ${Color.TrueWhite};
   border-radius: 1.6rem;
-  font-weight: ${Font.WEIGHT.MEDIUM};
-  font-size: ${Font.SIZE.BODY1};
-  color: ${Color.TrueBlack};
   //padding: 10px;
   text-align: center;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -27,4 +28,12 @@ export const ContentArea = styled.div`
   height: 50rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-top: none;
+`;
+
+export const LabelContainer = styled.span`
+  flex-grow: 1;
+  text-align: center;
+  font-weight: ${Font.WEIGHT.MEDIUM};
+  font-size: ${Font.SIZE.BODY1};
+  color: ${Color.TrueBlack};
 `;
