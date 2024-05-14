@@ -1,6 +1,7 @@
 import {useNavigate} from 'react-router-dom';
 import * as H from './Styles';
 import {LoggedOut} from '@/components/auth/LoggedOut.tsx';
+import Logo from '@/assets/svg/logo.svg?react';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ const Header = () => {
       <H.RightContainer>
         <H.RowContainer>
           <H.LogoWrap>
+            <Logo />
             SSU Match{/* <HeaderIcon onClick={() => navigate("/")} /> */}
           </H.LogoWrap>
           <H.Gap>

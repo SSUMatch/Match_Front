@@ -12,7 +12,7 @@ export const StyledBtn = styled.div`
   font-size: ${Font.SIZE.BODY3};
   font-weight: ${Font.WEIGHT.REGULAR};
   border-radius: 4rem;
-  border: 1px solid ${Color.MainLight};
+  border: 1px solid ${Color.BorderBlue};
   margin: 1rem;
   //color: ${Color.Gray90};
   color: ${Color.MainColor};
@@ -25,5 +25,5 @@ export const StyledBtn = styled.div`
 export const SelectedBtn = styled(StyledBtn)`
   color: ${Color.MainColor};
   background: ${Color.TrueWhite};
-  border: 1px solid ${Color.MainLight};
+  border: 1px solid ${Color.BorderBlue};
 `;

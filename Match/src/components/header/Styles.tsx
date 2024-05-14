@@ -16,13 +16,14 @@ export const Header = styled.div`
 
 export const LogoWrap = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
   color: ${Color.MainBlack};
   font-size: ${Font.SIZE.TITLE1};
   font-weight: ${Font.WEIGHT.SEMIBOLD};
+  gap: 1.5rem;
 `;
 
 export const BtnWrap = styled.div`
@@ -72,7 +73,6 @@ export const LogoutText = styled.div`
 `;
 
 export const RowContainer = styled.div`
-  gap: 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;

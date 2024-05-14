@@ -1,33 +1,35 @@
-import React, {useState} from 'react';
+import {ChangeEvent, FormEvent, useState} from 'react';
 import * as S from './Styles';
+import Search from '@/assets/svg/search.svg?react';
 
-const SearchBar = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+const SearchBar: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log('Searching for:', searchTerm);
+    console.log('Search term submitted:', searchTerm);
+    // Add search logic here
   };
-
   return (
-    <S.SearchBarContainer>
-      <form
-        onSubmit={handleSearchSubmit}
-        className='flex items-center space-x-2 shadow-md rounded-full p-2 w-full max-w-md'
-      >
-        {/* <S.IconDiv>/!* <S.SearchIcon /> *!/</S.IconDiv> */}
-        <S.Input
-          type='text'
-          placeholder='지역, 팀 이름으로 검색'
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
+    <S.Container>
+      <form onSubmit={handleSearchSubmit} className='w-full max-w-md'>
+        <S.SearchBarContainer>
+          <S.IconDiv>
+            <Search style={{width: '24px', height: '24px'}} />
+          </S.IconDiv>
+          <S.Input
+            type='text'
+            placeholder='지역, 팀 이름으로 검색'
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </S.SearchBarContainer>
       </form>
-    </S.SearchBarContainer>
+    </S.Container>
   );
 };
 

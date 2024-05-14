@@ -20,5 +20,6 @@ const Color = {
   BarBG: '#F2F5F7',
   Bar: '#FED771',
   Blue: '#2177FF',
+  BorderBlue: '#5383E8',
 } as const;
 export default Color;
