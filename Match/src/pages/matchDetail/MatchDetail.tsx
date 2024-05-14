@@ -8,22 +8,20 @@ const bannerImageUrl = 'src/assets/bannerImage.png';
 const MatchDetail = () => {
   return (
     <div>
-      <H.DefaultContainer>
-        <ImageBanner imgUrl={bannerImageUrl} />
-        <H.ContentContainer>
-          <H.DropDownContainer>
-            <DropDown label='매치 데이터'>
-              <MatchData expect='세미 프로' />
-            </DropDown>
-            <DropDown label='구장 정보'>
-              <MatchInfo />
-            </DropDown>
-            <DropDown label='매치 정보'>
-              <MatchData expect='세미 프로' />
-            </DropDown>
-          </H.DropDownContainer>
-        </H.ContentContainer>
-      </H.DefaultContainer>
+      <ImageBanner imgUrl={bannerImageUrl} />
+      <H.ContentContainer>
+        <H.DropDownContainer>
+          <DropDown label='매치 데이터'>
+            <MatchData expect='세미 프로' />
+          </DropDown>
+          <DropDown label='구장 정보'>
+            <MatchInfo />
+          </DropDown>
+          <DropDown label='매치 정보'>
+            <MatchData expect='세미 프로' />
+          </DropDown>
+        </H.DropDownContainer>
+      </H.ContentContainer>
     </div>
   );
 };

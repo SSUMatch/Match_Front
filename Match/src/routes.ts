@@ -7,6 +7,7 @@ const Favorites = React.lazy(() => import('@/pages/favorites/Favorites.tsx'));
 const Archive = React.lazy(() => import('@/pages/archive/Archive.tsx'));
 const Ranking = React.lazy(() => import('./pages/ranking/Ranking.tsx'));
 const NearBy = React.lazy(() => import('./pages/nearBy/NearBy.tsx'));
+const Test = React.lazy(() => import('./pages/matchDetail/MatchDetail.tsx'));
 
 const routes = [
   {path: '/', element: Home},
@@ -16,6 +17,7 @@ const routes = [
   {path: '/archive', element: Archive},
   {path: '/ranking', element: Ranking},
   {path: '/nearby', element: NearBy},
+  {path: '/test', element: Test},
 ];
 
 export default routes;

@@ -6,6 +6,7 @@ import Favorites from '@/pages/favorites/Favorites.tsx';
 import Archive from '@/pages/archive/Archive.tsx';
 import Ranking from '@/pages/ranking/Ranking.tsx';
 import NearBy from '@/pages/nearBy/NearBy.tsx';
+import Test from '@/pages/matchDetail/MatchDetail.tsx';
 import DefaultLayout from './layout/DefaultLayout.tsx';
 // import { AuthProvider } from "./components/auth/AuthProvider.tsx";
 
@@ -29,6 +30,7 @@ const App = () => {
             <Route path='archive' element={<Archive />} />
             <Route path='ranking' element={<Ranking />} />
             <Route path='nearby' element={<NearBy />} />
+            <Route path='test' element={<Test />} />
           </Route>
         </Routes>
       </Suspense>
