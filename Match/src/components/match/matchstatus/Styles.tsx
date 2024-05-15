@@ -26,6 +26,7 @@ export const StatusContainer = styled.div<{status: string}>`
   font-size: ${Font.SIZE.TITLE2};
   color: ${Color.TrueWhite};
   font-weight: ${Font.WEIGHT.SEMIBOLD};
+  cursor: pointer;
 `;
 
 export const LabelContainer = styled.div`

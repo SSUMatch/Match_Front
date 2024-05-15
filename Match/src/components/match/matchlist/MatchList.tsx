@@ -1,6 +1,7 @@
 import {useEffect} from 'react';
 import axios from 'axios';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
+import {useNavigate} from 'react-router-dom';
 import {MatchListState} from '@/recoil/match/States';
 import * as L from './Styles';
 import MatchStatus from '../matchstatus/MatchStatus';
@@ -8,6 +9,7 @@ import MatchStatus from '../matchstatus/MatchStatus';
 const MatchList = () => {
   const matches = useRecoilValue(MatchListState);
   const setMatches = useSetRecoilState(MatchListState);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,6 +37,10 @@ const MatchList = () => {
     fetchData();
   }, [setMatches]); // 의존성 배열에 setMatches 추가
 
+  const handleStatusClick = () => {
+    navigate('/test');
+  };
+
   return (
     <L.ListContainer>
       {matches.map(m => (
@@ -44,7 +50,10 @@ const MatchList = () => {
             <L.LocationWrap>{m.name}</L.LocationWrap>
             <L.TextWrap>{m.type}</L.TextWrap>
           </L.TitleWrap>
-          <MatchStatus status={m.status as 'APPLYING' | 'ONGOING' | 'FINISH'} />
+          <MatchStatus
+            status={m.status as 'APPLYING' | 'ONGOING' | 'FINISH'}
+            onClick={handleStatusClick}
+          />
         </L.MatchItem>
       ))}
     </L.ListContainer>

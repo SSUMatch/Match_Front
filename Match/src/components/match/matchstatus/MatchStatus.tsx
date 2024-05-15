@@ -1,7 +1,13 @@
 import * as S from './Styles';
 import {MatchStatusProps} from './MatchStatusProps';
 
-const MatchStatus = ({status}: MatchStatusProps) => {
+interface MatchStatusComponentProps extends MatchStatusProps {
+  onClick: () => void;
+}
+const MatchStatus: React.FC<MatchStatusComponentProps> = ({
+  status,
+  onClick,
+}) => {
   let label = '';
 
   if (status === 'APPLYING') {
@@ -12,7 +18,7 @@ const MatchStatus = ({status}: MatchStatusProps) => {
     label = '마감';
   }
   return (
-    <S.StatusContainer status={status}>
+    <S.StatusContainer status={status} onClick={onClick}>
       <S.LabelContainer>{label}</S.LabelContainer>
     </S.StatusContainer>
   );
