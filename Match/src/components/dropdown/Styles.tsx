@@ -7,6 +7,7 @@ export const DropdownContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-bottom: 2.5rem;
 `;
 export const StyledButton = styled.button`
   display: flex;
@@ -27,7 +28,6 @@ export const StyledButton = styled.button`
   //&:active {
   //  border-radius: 1.6rem 1.6rem 0 0;
   //}
-  margin-bottom: 2rem;
 `;
 
 export const ContentArea = styled.div`
