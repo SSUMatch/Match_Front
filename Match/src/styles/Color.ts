@@ -21,5 +21,7 @@ const Color = {
   Bar: '#FED771',
   Blue: '#2177FF',
   BorderBlue: '#5383E8',
+  ResultBlue: '#85AAF8',
+  Gold: '#FFCF51',
 } as const;
 export default Color;
