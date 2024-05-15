@@ -19,7 +19,7 @@ const ImageBanner: React.FC<ImageBannerProps> = ({imgUrl}) => {
         src={imgUrl}
         alt='Banner Image'
         style={{
-          maxWidth: '100%',
+          width: '100%',
           height: '38rem',
           borderRadius: '2rem',
         }}

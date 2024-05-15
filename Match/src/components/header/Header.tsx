@@ -26,7 +26,6 @@ const Header = () => {
           </H.Gap>
         </H.RowContainer>
       </H.RightContainer>
-
       <H.BtnWrap>
         <H.HeaderBtn onClick={() => navigate('/')}>홈</H.HeaderBtn>
         <H.HeaderBtn onClick={() => navigate('/favorites')}>

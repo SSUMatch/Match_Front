@@ -5,13 +5,14 @@ import Color from '../../styles/Color';
 export const Header = styled.div`
   display: flex;
   width: 100%;
-  height: 20rem;
+  max-height: 15rem;
   position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   z-index: 1;
   border: 0.1rem solid ${Color.Gray20};
+  padding: 0;
 `;
 
 export const LogoWrap = styled.div`
@@ -29,7 +30,7 @@ export const LogoWrap = styled.div`
 export const BtnWrap = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
 
@@ -86,7 +87,10 @@ export const Gap = styled.div`
 export const RightContainer = styled.div`
   width: 1280px;
   display: flex;
-  justify-content: right;
+  //justify-content: right;
+  justify-content: flex-end; /* justify-content: right 대신 flex-end 사용 */
+  padding: 0; /* 패딩 제거 */
+  margin-bottom: 0; /* 마진 제거 */
 `;
 
 export const Button = styled.button`
