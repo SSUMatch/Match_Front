@@ -14,9 +14,6 @@ export const TotalContainer = styled.div`
   text-align: center;
   width: 100%;
   height: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding-top: 4rem;
-  padding-bottom: 4rem;
 `;
 export const LabelContainer = styled.span`
   width: auto;
@@ -25,7 +22,7 @@ export const LabelContainer = styled.span`
   font-size: ${Font.SIZE.BODY1};
   color: ${Color.TrueBlack};
   display: block;
-  margin-left: 1.75rem;
+  //margin-left: 1.75rem;
 `;
 
 export const UnderLineLabelContainer = styled(LabelContainer)`
@@ -42,6 +39,8 @@ export const PorgerssContainer = styled.div`
   height: 30rem;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const PorgerssWrap = styled.div`

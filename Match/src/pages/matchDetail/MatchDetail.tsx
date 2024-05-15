@@ -3,6 +3,7 @@ import ImageBanner from '@/components/imagebanner/ImageBanner';
 import DropDown from '@/components/dropdown/DropDown';
 import MatchData from '@/components/dropdown/matchdata/MatchData.tsx';
 import MatchInfo from '@/components/dropdown/matchinfo/MatchInfo.tsx';
+import PlaceInfo from '@/components/dropdown/placeinfo/PlaceInfo.tsx';
 
 const bannerImageUrl = 'src/assets/bannerImage.png';
 const MatchDetail = () => {
@@ -18,7 +19,7 @@ const MatchDetail = () => {
             <MatchInfo />
           </DropDown>
           <DropDown label='매치 정보'>
-            <MatchData expect='세미 프로' />
+            <PlaceInfo />
           </DropDown>
         </H.DropDownContainer>
       </H.ContentContainer>

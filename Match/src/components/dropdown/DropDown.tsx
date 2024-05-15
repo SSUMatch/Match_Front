@@ -13,7 +13,7 @@ const Dropdown: React.FC<DropdownProps> = ({label, children}) => {
   const toggleDropdown = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <S.DropdownContainer>
       <S.StyledButton onClick={toggleDropdown}>
         <S.LabelContainer>{label}</S.LabelContainer>
         <Down
@@ -27,7 +27,7 @@ const Dropdown: React.FC<DropdownProps> = ({label, children}) => {
         />
       </S.StyledButton>
       {isOpen && <S.ContentArea>{children}</S.ContentArea>}
-    </div>
+    </S.DropdownContainer>
   );
 };
 
