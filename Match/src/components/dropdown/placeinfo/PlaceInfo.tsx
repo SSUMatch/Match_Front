@@ -25,7 +25,9 @@ const PlaceInfo = () => {
           </S.IconItem>
         ))}
       </S.GridContainer>
-      <S.LabelWrapper>호날두 매니저</S.LabelWrapper>
+      <S.LabelWrapper>
+        <S.HighlightLabel>호날두</S.HighlightLabel> 매니저
+      </S.LabelWrapper>
     </S.TotalContainer>
   );
 };

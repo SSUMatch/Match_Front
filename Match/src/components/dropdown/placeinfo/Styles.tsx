@@ -2,6 +2,10 @@ import styled from '@emotion/styled';
 import Font from '@/styles/Font';
 import Color from '@/styles/Color';
 
+export const HighlightLabel = styled.span`
+  color: ${Color.Blue};
+  font-weight: ${Font.WEIGHT.BOLD};
+`;
 export const TotalContainer = styled.div`
   display: flex;
   flex-direction: column;

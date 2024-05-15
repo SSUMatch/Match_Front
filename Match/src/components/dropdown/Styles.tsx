@@ -47,6 +47,6 @@ export const LabelContainer = styled.span`
   flex-grow: 1;
   text-align: center;
   font-weight: ${Font.WEIGHT.MEDIUM};
-  font-size: ${Font.SIZE.BODY1};
+  font-size: ${Font.SIZE.TITLE3};
   color: ${Color.TrueBlack};
 `;
