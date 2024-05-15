@@ -6,16 +6,18 @@ interface ProgressProps {
   height: string; // 높이 값을 string 타입으로 지정
 }
 
-export const UnderLineContainer = styled.span`
-  width: auto;
-  height: 4rem;
-  font-weight: ${Font.WEIGHT.MEDIUM};
-  font-size: ${Font.SIZE.BODY1};
-  color: ${Color.TrueBlack};
-  display: block;
-  margin-left: 1.75rem;
+export const TotalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 `;
-
 export const LabelContainer = styled.span`
   width: auto;
   height: 4rem;

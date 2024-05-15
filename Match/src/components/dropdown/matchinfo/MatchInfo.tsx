@@ -18,16 +18,18 @@ const icons = [
 // 컴포넌트
 const MatchInfo = () => {
   return (
-    <S.GridContainer>
-      {icons.map((icon, index) => (
-        <S.IconItem key={index}>
-          <S.IconImage>
-            <icon.Component />
-          </S.IconImage>
-          <S.IconLabel>{icon.label}</S.IconLabel>
-        </S.IconItem>
-      ))}
-    </S.GridContainer>
+    <S.TotalContainer>
+      <S.GridContainer>
+        {icons.map((icon, index) => (
+          <S.IconItem key={index}>
+            <S.IconImage>
+              <icon.Component />
+            </S.IconImage>
+            <S.IconLabel>{icon.label}</S.IconLabel>
+          </S.IconItem>
+        ))}
+      </S.GridContainer>
+    </S.TotalContainer>
   );
 };
 

@@ -7,13 +7,7 @@ interface MatchDataProps {
 
 const MatchData: React.FC<MatchDataProps> = ({expect}) => {
   return (
-    <div
-      style={{
-        paddingTop: '1.6rem',
-        background: '#FFFFFF',
-        boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
-      }}
-    >
+    <S.TotalContainer>
       <S.UnderLineLabelContainer>레벨분포</S.UnderLineLabelContainer>
       <S.LabelContainer>
         예상 평균 레벨은 <S.HighlightLabel>{expect}</S.HighlightLabel> 입니다
@@ -55,7 +49,7 @@ const MatchData: React.FC<MatchDataProps> = ({expect}) => {
           <S.TextLabel>프로</S.TextLabel>
         </S.PorgerssWrap>
       </S.PorgerssContainer>
-    </div>
+    </S.TotalContainer>
   );
 };
 

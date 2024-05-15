@@ -8,6 +8,11 @@ export const TotalContainer = styled.div`
   justify-items: center;
   align-items: center;
   text-align: center;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 `;
 
 export const GridContainer = styled.div`
@@ -18,7 +23,6 @@ export const GridContainer = styled.div`
   justify-items: center;
   align-items: center;
   text-align: center;
-  margin-top: 4rem;
   margin-bottom: 4rem;
 `;
 
