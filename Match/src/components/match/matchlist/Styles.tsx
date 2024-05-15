@@ -5,14 +5,14 @@ import Color from '../../../styles/Color';
 export const ListContainer = styled.ul`
   list-style-type: none;
   padding: 0;
-  width: 120rem;
+  width: 100%;
   height: 112rem;
 `;
 
 export const MatchItem = styled.li`
   display: flex;
   align-items: center;
-  border: 0.1rem solid ${Color.Gray20};
+  border-bottom: 0.1rem solid ${Color.Gray20};
   //padding: 10px;
 `;
 

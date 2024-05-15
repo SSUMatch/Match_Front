@@ -32,6 +32,6 @@ export const LabelContainer = styled.div`
   width: auto;
   height: auto;
   font-weight: ${Font.WEIGHT.SEMIBOLD};
-  font-size: ${Font.SIZE.BODY3};
+  font-size: ${Font.SIZE.BODY1};
   color: ${Color.TrueWhite};
 `;

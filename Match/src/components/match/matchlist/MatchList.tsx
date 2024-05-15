@@ -1,12 +1,13 @@
 import {useEffect} from 'react';
 import axios from 'axios';
-import {useRecoilState} from 'recoil';
+import {useRecoilValue, useSetRecoilState} from 'recoil';
 import {MatchListState} from '@/recoil/match/States';
 import * as L from './Styles';
 import MatchStatus from '../matchstatus/MatchStatus';
 
 const MatchList = () => {
-  const [matches, setMatches] = useRecoilState(MatchListState);
+  const matches = useRecoilValue(MatchListState);
+  const setMatches = useSetRecoilState(MatchListState);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,7 +44,7 @@ const MatchList = () => {
             <L.LocationWrap>{m.name}</L.LocationWrap>
             <L.TextWrap>{m.type}</L.TextWrap>
           </L.TitleWrap>
-          <MatchStatus status='APPLYING' />
+          <MatchStatus status={m.status as 'APPLYING' | 'ONGOING' | 'FINISH'} />
         </L.MatchItem>
       ))}
     </L.ListContainer>
