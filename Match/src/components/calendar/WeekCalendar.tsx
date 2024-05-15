@@ -32,7 +32,7 @@ const WeekCalendar: React.FC = () => {
       <div css={tw`flex justify-between items-center p-4`}>
         <button
           onClick={previousWeek}
-          css={tw`cursor-pointer`}
+          css={tw`cursor-pointer outline-none focus:outline-none`}
           aria-label='Previous week'
         >
           <FiChevronLeft size={36} /> {/* 아이콘 크기 조정 */}
@@ -44,7 +44,7 @@ const WeekCalendar: React.FC = () => {
         </div>
         <button
           onClick={nextWeek}
-          css={tw`cursor-pointer`}
+          css={tw`cursor-pointer outline-none focus:outline-none`}
           aria-label='Next week'
         >
           <FiChevronRight size={36} /> {/* 아이콘 크기 조정 */}
