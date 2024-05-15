@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import * as S from './Styles';
 import StarClicked from '@/assets/svg/starClicked.svg?react';
 import StarUnclicked from '@/assets/svg/starUnclicked.svg?react';
+import Modal from '@/components/modal/Modal';
 
 interface MatchDetailProps {
   date: string;
@@ -17,9 +18,13 @@ const MatchDetail: React.FC<MatchDetailProps> = ({
   // price,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
+  };
+  const handleApply = () => {
+    setIsModalOpen(true);
   };
   return (
     <S.LabelContainer>
@@ -38,8 +43,9 @@ const MatchDetail: React.FC<MatchDetailProps> = ({
       <S.HeadLabel>{placeName}</S.HeadLabel>
       <S.SubLabel>{location}</S.SubLabel>
       <S.ApplyWrapper>
-        <S.ApplyButton>매치 신청</S.ApplyButton>
+        <S.ApplyButton onClick={handleApply}>매치 신청</S.ApplyButton>
       </S.ApplyWrapper>
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </S.LabelContainer>
   );
 };
