@@ -8,7 +8,7 @@ import bathroom from '@/assets/svg/bathroom.svg?react';
 // 아이콘 데이터 배열
 const icons = [
   {Component: football, label: '구장 규격 40 x 20'},
-  {Component: shoes, label: '포상한 대어'},
+  {Component: shoes, label: '풋살화 대여'},
   {Component: uniform, label: '용품 대여'},
   {Component: parking, label: '주차'},
   {Component: shower, label: '샤워 시설'},
