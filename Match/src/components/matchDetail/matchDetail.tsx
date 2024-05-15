@@ -37,7 +37,9 @@ const MatchDetail: React.FC<MatchDetailProps> = ({
       </S.HeadWrapper>
       <S.HeadLabel>{placeName}</S.HeadLabel>
       <S.SubLabel>{location}</S.SubLabel>
-      <S.ApplyButton />
+      <S.ApplyWrapper>
+        <S.ApplyButton>매치 신청</S.ApplyButton>
+      </S.ApplyWrapper>
     </S.LabelContainer>
   );
 };

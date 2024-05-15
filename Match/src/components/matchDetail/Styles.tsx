@@ -65,10 +65,10 @@ export const FavoriteButton = styled.button`
 `;
 
 export const ApplyButton = styled.button`
-  width: 20rem;
-  height: 7rem;
+  width: 10rem;
+  height: 3.5rem;
   font-weight: ${Font.WEIGHT.BOLD};
-  font-size: ${Font.SIZE.BODY1};
+  font-size: ${Font.SIZE.CAPTION};
   color: ${Color.TrueWhite};
   background-color: ${Color.Applying};
   border: none;
@@ -78,4 +78,12 @@ export const ApplyButton = styled.button`
   &:hover {
     background-color: ${Color.Blue};
   }
+`;
+
+export const ApplyWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 18rem;
+  padding-right: 1rem;
+  justify-content: flex-end;
 `;
