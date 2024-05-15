@@ -4,9 +4,10 @@ import DropDown from '@/components/dropdown/DropDown';
 import MatchData from '@/components/dropdown/matchdata/MatchData.tsx';
 import MatchInfo from '@/components/dropdown/matchinfo/MatchInfo.tsx';
 import PlaceInfo from '@/components/dropdown/placeinfo/PlaceInfo.tsx';
+import MatchDetail from '@/components/matchDetail/matchDetail.tsx';
 
 const bannerImageUrl = 'src/assets/bannerImage.png';
-const MatchDetail = () => {
+const MatchPageDetail = () => {
   return (
     <div>
       <ImageBanner imgUrl={bannerImageUrl} />
@@ -22,9 +23,14 @@ const MatchDetail = () => {
             <PlaceInfo />
           </DropDown>
         </H.DropDownContainer>
+        <MatchDetail
+          date='3월 30일 토요일 20 : 00'
+          location='상도동 상도로 369'
+          placeName='숭실대학교 풋살 구장 A'
+        />
       </H.ContentContainer>
     </div>
   );
 };
 
-export default MatchDetail;
+export default MatchPageDetail;

@@ -7,14 +7,14 @@ interface MatchDetailProps {
   date: string;
   placeName: string;
   location: string;
-  price: number;
+  // price: number;
 }
 
 const MatchDetail: React.FC<MatchDetailProps> = ({
   date,
   placeName,
   location,
-  price,
+  // price,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -28,9 +28,9 @@ const MatchDetail: React.FC<MatchDetailProps> = ({
         <S.ButtonContainer>
           <S.FavoriteButton onClick={toggleFavorite}>
             {isFavorite ? (
-              <StarClicked width={40} height={40} />
+              <StarClicked width={56} height={56} />
             ) : (
-              <StarUnclicked width={40} height={40} />
+              <StarUnclicked width={56} height={56} />
             )}
           </S.FavoriteButton>
         </S.ButtonContainer>

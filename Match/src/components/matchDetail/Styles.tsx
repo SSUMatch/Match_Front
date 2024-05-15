@@ -7,7 +7,7 @@ export const LabelContainer = styled.div`
   flex-direction: column;
   width: 53rem;
   height: 35rem;
-  padding: 2rem;
+  padding: 3rem;
   border: 1px solid black;
 `;
 
@@ -24,10 +24,10 @@ export const HeadLabel = styled.span`
   width: auto;
   height: 4rem;
   font-weight: ${Font.WEIGHT.MEDIUM};
-  font-size: ${Font.SIZE.BODY1};
+  font-size: ${Font.SIZE.TITLE3};
   color: ${Color.TrueBlack};
-  justify-items: center;
-  line-height: 4rem;
+  line-height: normal;
+  text-align: left;
 `;
 
 export const SubLabel = styled.span`
@@ -35,10 +35,10 @@ export const SubLabel = styled.span`
   width: auto;
   height: 4rem;
   font-weight: ${Font.WEIGHT.BOLD};
-  font-size: ${Font.SIZE.BODY3};
+  font-size: ${Font.SIZE.BODY1};
   color: ${Color.Gray70};
-  justify-items: center;
-  line-height: 4rem;
+  text-align: left;
+  line-height: normal;
 `;
 
 export const ButtonContainer = styled.div`
@@ -65,10 +65,10 @@ export const FavoriteButton = styled.button`
 `;
 
 export const ApplyButton = styled.button`
-  width: 10rem;
-  height: 3.5rem;
+  width: 16rem;
+  height: 5rem;
   font-weight: ${Font.WEIGHT.BOLD};
-  font-size: ${Font.SIZE.CAPTION};
+  font-size: ${Font.SIZE.BODY2};
   color: ${Color.TrueWhite};
   background-color: ${Color.Applying};
   border: none;
