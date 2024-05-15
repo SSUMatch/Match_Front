@@ -1,5 +1,5 @@
 import {ComponentStory, ComponentMeta} from '@storybook/react';
-import MatchDetail from '@/components/matchDetail/matchDetail';
+import MatchDetail from '@/components/matchDetail/MatchDetail.tsx';
 
 export default {
   title: 'Components/MatchDetail',

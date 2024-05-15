@@ -4,7 +4,7 @@ import DropDown from '@/components/dropdown/DropDown';
 import MatchData from '@/components/dropdown/matchdata/MatchData.tsx';
 import MatchInfo from '@/components/dropdown/matchinfo/MatchInfo.tsx';
 import PlaceInfo from '@/components/dropdown/placeinfo/PlaceInfo.tsx';
-import MatchDetail from '@/components/matchDetail/matchDetail.tsx';
+import MatchDetail from '@/components/matchDetail/MatchDetail.tsx';
 
 const bannerImageUrl = 'src/assets/bannerImage.png';
 const MatchPageDetail = () => {

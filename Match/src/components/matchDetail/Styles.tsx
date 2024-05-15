@@ -8,7 +8,8 @@ export const LabelContainer = styled.div`
   width: 53rem;
   height: 35rem;
   padding: 3rem;
-  border: 1px solid black;
+  border-radius: 1.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 export const HeadWrapper = styled.div`
@@ -49,8 +50,8 @@ export const ButtonContainer = styled.div`
 `;
 
 export const FavoriteButton = styled.button`
-  width: 4rem;
-  height: 4rem;
+  width: 6rem;
+  height: 6rem;
   color: ${Color.TrueWhite};
   background-color: transparent;
   border: none;
@@ -59,8 +60,11 @@ export const FavoriteButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  &:hover {
-    background-color: ${Color.BarBG};
+  // &:hover {
+  //   background-color: ${Color.BarBG};
+  // }
+  &:focus {
+    outline: none; /* 포커스 시 테두리 제거 */
   }
 `;
 
