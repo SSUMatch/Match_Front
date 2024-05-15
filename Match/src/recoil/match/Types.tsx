@@ -5,3 +5,9 @@ export interface MatchListTypes {
   type: string;
   status: string;
 }
+
+export interface FavTypes {
+  favId: number;
+  name: string;
+  place: string;
+}

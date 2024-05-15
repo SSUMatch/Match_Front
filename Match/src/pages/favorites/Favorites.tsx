@@ -1,7 +1,7 @@
-import {DefaultContainer} from './Styles';
+import FavoriteList from '@/components/favorites/Favorites.tsx';
 
 const Favorites = () => {
-  return <DefaultContainer />;
+  return <FavoriteList />;
 };
 
 export default Favorites;
