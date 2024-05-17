@@ -26,7 +26,7 @@ const MatchPageDetail = () => {
         <MatchDetail
           date='3월 30일 토요일 20 : 00'
           location='상도동 상도로 369'
-          placeName='숭실대학교 풋살 구장 A'
+          placeName='숭실대학교 풋살 구장 B'
         />
       </H.ContentContainer>
     </div>
