@@ -10,11 +10,11 @@ export const StatusContainer = styled.div<{status: string}>`
   border-radius: 2.4rem;
   background-color: ${({status}) => {
     switch (status) {
-      case 'APPLYING':
+      case '신청':
         return Color.Applying;
-      case 'ONGOING':
+      case '마감 임박':
         return Color.Ongoing;
-      case 'FINISH':
+      case '마감':
         return Color.Finish;
       default:
         return Color.Gray20;

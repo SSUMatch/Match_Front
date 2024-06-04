@@ -1,3 +1,3 @@
 export interface MatchStatusProps {
-  status: 'APPLYING' | 'ONGOING' | 'FINISH';
+  status: '신청' | '마감 임박' | '마감';
 }

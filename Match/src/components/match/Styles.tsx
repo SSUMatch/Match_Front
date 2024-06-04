@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import Font from '../../../styles/Font';
-import Color from '../../../styles/Color';
+import Font from '../../styles/Font.ts';
+import Color from '../../styles/Color.ts';
 
 export const ListContainer = styled.ul`
   list-style-type: none;
@@ -13,7 +13,6 @@ export const MatchItem = styled.li`
   display: flex;
   align-items: center;
   border-bottom: 0.1rem solid ${Color.Gray20};
-  //padding: 10px;
 `;
 
 export const TimeWrap = styled.div`

@@ -1,3 +1,4 @@
+import React from 'react';
 import * as S from './Styles';
 import {MatchStatusProps} from './MatchStatusProps';
 
@@ -10,11 +11,11 @@ const MatchStatus: React.FC<MatchStatusComponentProps> = ({
 }) => {
   let label = '';
 
-  if (status === 'APPLYING') {
+  if (status === '신청') {
     label = '신청';
-  } else if (status === 'ONGOING') {
+  } else if (status === '마감 임박') {
     label = '마감 임박';
-  } else if (status === 'FINISH') {
+  } else if (status === '마감') {
     label = '마감';
   }
   return (
