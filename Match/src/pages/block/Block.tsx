@@ -1,7 +1,7 @@
-import FavoriteList from '@/components/favorites/Favorites.tsx';
+import BlockList from '@/components/block/Block.tsx';
 
 const Block = () => {
-  return <FavoriteList />;
+  return <BlockList />;
 };
 
 export default Block;
