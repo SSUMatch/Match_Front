@@ -19,7 +19,7 @@
 //
 //   return (
 //     <H.RowContainer>
-//       <H.LogoutText onClick={() => navigate("/mypage")}>
+//       <H.LogoutText onClick={() => navigate("/myPage")}>
 //         마이페이지
 //       </H.LogoutText>
 //     </H.RowContainer>
