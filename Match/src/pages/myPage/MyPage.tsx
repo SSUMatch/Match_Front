@@ -1,10 +1,12 @@
 import {useEffect} from 'react';
 import axios from 'axios';
 import {useRecoilState} from 'recoil';
+import {useNavigate} from 'react-router-dom';
 import {UserState} from '@/recoil/user/States';
 import * as S from './Styles';
 
 const MyPage = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useRecoilState(UserState);
 
   useEffect(() => {
@@ -30,7 +32,9 @@ const MyPage = () => {
         <S.SidebarItem>팀정보</S.SidebarItem>
         <S.SidebarItem>기록</S.SidebarItem>
         <S.SidebarItem>즐겨찾기</S.SidebarItem>
-        <S.SidebarItem>차단 목록</S.SidebarItem>
+        <S.SidebarItem onClick={() => navigate('/block')}>
+          차단 목록
+        </S.SidebarItem>
         <S.SidebarItem>랭킹</S.SidebarItem>
         <S.SidebarItem>주변 구장 찾기</S.SidebarItem>
         <S.SidebarItem>자주 묻는 질문</S.SidebarItem>

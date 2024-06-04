@@ -9,6 +9,7 @@ const Ranking = React.lazy(() => import('./pages/ranking/Ranking.tsx'));
 const NearBy = React.lazy(() => import('./pages/nearBy/NearBy.tsx'));
 const Test = React.lazy(() => import('./pages/matchDetail/MatchDetail.tsx'));
 const Login = React.lazy(() => import('./pages/myPage/MyPage.tsx'));
+const Block = React.lazy(() => import('./pages/block/Block.tsx'));
 
 const routes = [
   {path: '/', element: Home},
@@ -19,6 +20,7 @@ const routes = [
   {path: '/ranking', element: Ranking},
   {path: '/nearby', element: NearBy},
   {path: '/test', element: Test},
+  {path: '/block', element: Block},
 ];
 
 export default routes;
