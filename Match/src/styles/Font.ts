@@ -1,5 +1,6 @@
 const Font = {
   SIZE: {
+    HYPER: '5rem',
     TITLE1: '3rem',
     TITLE2: '2.5rem',
     TITLE3: '2rem',

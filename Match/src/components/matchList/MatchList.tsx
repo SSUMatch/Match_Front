@@ -88,27 +88,25 @@ const MatchList: React.FC = () => {
       {gameData && (
         <>
           <S.GameInfo onClick={toggleDropdown}>
-            <S.InfoItem>
-              <S.Label>Date:</S.Label>
-              <S.Value>{gameData.date}</S.Value>
-            </S.InfoItem>
-            <S.InfoItem>
-              <S.Label>Place:</S.Label>
-              <S.Value>{gameData.place}</S.Value>
-            </S.InfoItem>
-            <S.InfoItem>
-              <S.Label>Type:</S.Label>
-              <S.Value>{gameData.type}</S.Value>
-            </S.InfoItem>
-            {gameData.isPom && <S.POM src={POMImage} alt='POM' />}
-            <S.InfoItem>
-              <S.Label>Point:</S.Label>
-              <S.Value>
+            <S.InfoWrap>
+              <S.InfoItem>
+                <S.DateValue>{gameData.date}</S.DateValue>
+              </S.InfoItem>
+              <S.InfoItem>
+                <S.PlaceValue>{gameData.place}</S.PlaceValue>
+              </S.InfoItem>
+              <S.InfoItem>
+                <S.TypeValue>{gameData.type}</S.TypeValue>
+              </S.InfoItem>
+            </S.InfoWrap>
+            <S.ImgWrap>
+              {gameData.isPom && <S.POM src={POMImage} alt='POM' />}
+              <S.PointValue>
                 {gameData.point > 0
                   ? `+${gameData.point}P`
                   : `${gameData.point}P`}
-              </S.Value>
-            </S.InfoItem>
+              </S.PointValue>
+            </S.ImgWrap>
             <S.NumberColorImage src={Red2Image} alt='RED 2' />
           </S.GameInfo>
 
@@ -132,55 +130,57 @@ const MatchList: React.FC = () => {
                     .filter(record => record.quarter === selectedQuarter)
                     .map(record => (
                       <div key={record.quarter}>
-                        <S.ScoreContainer>
-                          <S.TeamScore>
-                            <img
-                              src={getTeamImage(record.team1)}
-                              alt={record.team1}
-                            />
-                            <S.Score>{record.team1Goal}</S.Score>
-                            <S.Score>:</S.Score>
-                            <S.Score>{record.team2Goal}</S.Score>
-                            <img
-                              src={getTeamImage(record.team2)}
-                              alt={record.team2}
-                            />
-                          </S.TeamScore>
-                        </S.ScoreContainer>
-                        <S.TeamContainer>
-                          <S.Team>
-                            {record.team1Record.map(player => (
-                              <S.PlayerStats key={player.num}>
-                                <img
-                                  src={getTeamImage(record.team1)}
-                                  alt={record.team1}
-                                />
-                                <img src={GoalImage} alt='Goal' />
-                                <p>{player.goal}</p>
-                                <img src={AssistImage} alt='Assist' />
-                                <p>{player.assist}</p>
-                                <img src={DefenseImage} alt='Defense' />
-                                <p>{player.defense}</p>
-                              </S.PlayerStats>
-                            ))}
-                          </S.Team>
-                          <S.Team>
-                            {record.team2Record.map(player => (
-                              <S.PlayerStats key={player.num}>
-                                <img
-                                  src={getTeamImage(record.team2)}
-                                  alt={record.team2}
-                                />
-                                <img src={GoalImage} alt='Goal' />
-                                <p>{player.goal}</p>
-                                <img src={AssistImage} alt='Assist' />
-                                <p>{player.assist}</p>
-                                <img src={DefenseImage} alt='Defense' />
-                                <p>{player.defense}</p>
-                              </S.PlayerStats>
-                            ))}
-                          </S.Team>
-                        </S.TeamContainer>
+                        <S.UpperContainer>
+                          <S.ScoreContainer>
+                            <S.TeamScore>
+                              <img
+                                src={getTeamImage(record.team1)}
+                                alt={record.team1}
+                              />
+                              <S.Score>{record.team1Goal}</S.Score>
+                              <S.Score>:</S.Score>
+                              <S.Score>{record.team2Goal}</S.Score>
+                              <img
+                                src={getTeamImage(record.team2)}
+                                alt={record.team2}
+                              />
+                            </S.TeamScore>
+                          </S.ScoreContainer>
+                          <S.TeamContainer>
+                            <S.Team>
+                              {record.team1Record.map(player => (
+                                <S.PlayerStats key={player.num}>
+                                  <img
+                                    src={getTeamImage(record.team1)}
+                                    alt={record.team1}
+                                  />
+                                  <p>{player.goal}</p>
+                                  <img src={GoalImage} alt='Goal' />
+                                  <p>{player.assist}</p>
+                                  <img src={AssistImage} alt='Assist' />
+                                  <p>{player.defense}</p>
+                                  <img src={DefenseImage} alt='Defense' />
+                                </S.PlayerStats>
+                              ))}
+                            </S.Team>
+                            <S.Team>
+                              {record.team2Record.map(player => (
+                                <S.PlayerStats key={player.num}>
+                                  <img
+                                    src={getTeamImage(record.team2)}
+                                    alt={record.team2}
+                                  />
+                                  <p>{player.goal}</p>
+                                  <img src={GoalImage} alt='Goal' />
+                                  <p>{player.assist}</p>
+                                  <img src={AssistImage} alt='Assist' />
+                                  <p>{player.defense}</p>
+                                  <img src={DefenseImage} alt='Defense' />
+                                </S.PlayerStats>
+                              ))}
+                            </S.Team>
+                          </S.TeamContainer>
+                        </S.UpperContainer>
                       </div>
                     ))}
                 </S.QuarterInfo>

@@ -23,6 +23,8 @@ const Color = {
   Blue: '#2177FF',
   BorderBlue: '#5383E8',
   ResultBlue: '#85AAF8',
+  MildBlue: '#ECF2FF',
+  LightBlue: '#C9DAFF',
   Gold: '#FFCF51',
 } as const;
 export default Color;
