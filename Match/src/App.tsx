@@ -8,6 +8,7 @@ import Ranking from '@/pages/ranking/Ranking.tsx';
 import NearBy from '@/pages/nearBy/NearBy.tsx';
 import Test from '@/pages/matchDetail/MatchDetail.tsx';
 import DefaultLayout from './layout/DefaultLayout.tsx';
+import Login from '@/pages/myPage/MyPage.tsx';
 // import { AuthProvider } from "./components/auth/AuthProvider.tsx";
 
 const loading = <div>화면 로딩중...</div>;
@@ -31,6 +32,7 @@ const App = () => {
             <Route path='ranking' element={<Ranking />} />
             <Route path='nearby' element={<NearBy />} />
             <Route path='test' element={<Test />} />
+            <Route path='login' element={<Login />} />
           </Route>
         </Routes>
       </Suspense>

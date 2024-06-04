@@ -8,10 +8,11 @@ const Archive = React.lazy(() => import('@/pages/archive/Archive.tsx'));
 const Ranking = React.lazy(() => import('./pages/ranking/Ranking.tsx'));
 const NearBy = React.lazy(() => import('./pages/nearBy/NearBy.tsx'));
 const Test = React.lazy(() => import('./pages/matchDetail/MatchDetail.tsx'));
+const Login = React.lazy(() => import('./pages/myPage/MyPage.tsx'));
 
 const routes = [
   {path: '/', element: Home},
-  // { path: '/login', element: Login },
+  {path: '/login', element: Login},
   // { path: '/signIn', element: SignIn },
   {path: '/favorites', element: Favorites},
   {path: '/archive', element: Archive},
