@@ -111,7 +111,7 @@ export const PlayerStats = styled.div<{active: boolean}>`
   }
 `;
 
-export const PlayerSelectButton = styled.button<{active: boolean}>`
+export const PlayerSelectButton = styled.div<{active: boolean}>`
   width: 20px;
   height: 20px;
   border-radius: 50%;
