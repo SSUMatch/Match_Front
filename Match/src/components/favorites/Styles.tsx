@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import Color from '@/styles/Color.ts';
-import Font from '@/styles/Font.ts';
+import Color from '@/styles/Color';
+import Font from '@/styles/Font';
 
 export const Title = styled.div`
   font-size: ${Font.SIZE.TITLE1};
@@ -8,12 +8,17 @@ export const Title = styled.div`
   color: ${Color.TrueBlack};
   margin-bottom: 1rem;
   margin-top: 3rem;
+  text-align: left;
+  margin-left: 2rem;
 `;
+
 export const ListContainer = styled.ul`
   list-style-type: none;
   padding: 0;
   width: 100%;
   height: 112rem;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const FavItem = styled.li`
@@ -21,7 +26,6 @@ export const FavItem = styled.li`
   flex-direction: row;
   align-items: center;
   border: none;
-  //padding: 10px;
 `;
 
 export const NameWrap = styled.div`
@@ -55,4 +59,52 @@ export const IconWrap = styled.div`
   justify-content: center;
   width: 5rem;
   height: 5rem;
+`;
+
+export const SelectAllButton = styled.button`
+  display: block;
+  //margin: 0 auto 10px auto;
+  margin-left: auto;
+  margin-right: 1rem;
+  padding: 10px 20px;
+  font-size: ${Font.SIZE.BODY1};
+  font-weight: ${Font.WEIGHT.BOLD};
+  color: ${Color.TrueWhite};
+  background-color: ${Color.Bar};
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${Color.Gold};
+  }
+`;
+
+export const DeleteButton = styled.button`
+  display: block;
+  //margin: 20px auto 0 auto;
+  margin-left: auto;
+  margin-right: 1rem;
+  margin-top: auto;
+  padding: 10px 20px;
+  font-size: ${Font.SIZE.BODY1};
+  font-weight: ${Font.WEIGHT.BOLD};
+  color: ${Color.TrueWhite};
+  background-color: ${Color.Delete};
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${Color.Ongoing};
+  }
+`;
+
+export const RegionLabel = styled.div`
+  font-size: ${Font.SIZE.TITLE1};
+  font-weight: ${Font.WEIGHT.BOLD};
+  color: ${Color.TrueBlack};
+  margin: 1rem 0;
+  padding-left: 2rem;
+  text-align: left;
 `;

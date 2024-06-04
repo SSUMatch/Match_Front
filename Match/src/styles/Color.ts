@@ -16,6 +16,7 @@ const Color = {
   BGgray: '#FCFCFC',
   Applying: '#5AD2FF',
   Ongoing: '#FF8C8C',
+  Delete: '#FDB7B7',
   Finish: '#DCDCDC',
   BarBG: '#F2F5F7',
   Bar: '#FED771',

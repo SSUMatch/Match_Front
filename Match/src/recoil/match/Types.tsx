@@ -6,8 +6,10 @@ export interface MatchListTypes {
   status: string;
 }
 
-export interface FavTypes {
-  favId: number;
+export interface FavoriteItem {
+  favoriteId: number;
+  placeId: number;
+  region: string;
   name: string;
-  place: string;
+  address: string;
 }
