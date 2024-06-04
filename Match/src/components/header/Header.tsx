@@ -9,7 +9,7 @@ const Header = () => {
     <H.Header>
       <H.RightContainer>
         <H.RowContainer>
-          <H.LogoWrap>
+          <H.LogoWrap onClick={() => navigate('/')}>
             <Logo />
             SSU Match{/* <HeaderIcon onClick={() => navigate("/")} /> */}
           </H.LogoWrap>

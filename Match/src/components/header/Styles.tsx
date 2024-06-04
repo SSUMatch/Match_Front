@@ -25,6 +25,7 @@ export const LogoWrap = styled.div`
   font-size: ${Font.SIZE.TITLE1};
   font-weight: ${Font.WEIGHT.SEMIBOLD};
   gap: 1.5rem;
+  cursor: pointer;
 `;
 
 export const BtnWrap = styled.div`
@@ -41,6 +42,7 @@ export const HeaderBtn = styled.div`
   margin: 0 8rem;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   color: ${Color.MainBlack};
   font-size: ${Font.SIZE.TITLE3};
   font-weight: ${Font.WEIGHT.REGULAR};
