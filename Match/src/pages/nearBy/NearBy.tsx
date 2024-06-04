@@ -1,7 +1,11 @@
-import {DefaultContainer} from './Styles';
+import MapComponent from '@/components/map/Map.tsx';
 
 const NearBy = () => {
-  return <DefaultContainer />;
+  return (
+    <div>
+      <MapComponent />
+    </div>
+  );
 };
 
 export default NearBy;
