@@ -149,7 +149,7 @@ const MatchList: React.FC = () => {
                           <S.TeamContainer>
                             <S.Team>
                               {record.team1Record.map(player => (
-                                <S.PlayerStats key={player.num}>
+                                <S.PlayerStats key={player.num} active>
                                   <img
                                     src={getTeamImage(record.team1)}
                                     alt={record.team1}
@@ -165,7 +165,7 @@ const MatchList: React.FC = () => {
                             </S.Team>
                             <S.Team>
                               {record.team2Record.map(player => (
-                                <S.PlayerStats key={player.num}>
+                                <S.PlayerStats key={player.num} active>
                                   <img
                                     src={getTeamImage(record.team2)}
                                     alt={record.team2}

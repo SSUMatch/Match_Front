@@ -8,6 +8,7 @@ export const AppContainer = styled.div`
   padding: 3px;
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 export const GameInfo = styled.div`

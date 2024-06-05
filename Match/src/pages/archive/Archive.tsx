@@ -1,7 +1,7 @@
-import {DefaultContainer} from './Styles';
+import MatchList from '@/components/matchList/MatchList';
 
 const Archive = () => {
-  return <DefaultContainer />;
+  return <MatchList />;
 };
 
 export default Archive;
