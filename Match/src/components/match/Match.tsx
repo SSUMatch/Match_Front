@@ -14,7 +14,7 @@ const Match = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://13.209.18.210/match', {
+        const response = await axios.get('https://kusitms28.store/match', {
           params: {
             page: 0,
             take: 2,

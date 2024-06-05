@@ -27,7 +27,7 @@ const MapComponent: React.FC = () => {
       map.setCenter(locPosition);
 
       axios
-        .post('http://13.209.18.210/places/nearby', {
+        .post('https://kusitms28.store/places/nearby', {
           latitude: lat,
           longitude: lon,
         })

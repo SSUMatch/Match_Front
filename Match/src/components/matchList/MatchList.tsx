@@ -39,7 +39,7 @@ const MatchList: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get('http://13.209.18.210/api/record?userId=2')
+      .get('https://kusitms28.store/api/record?userId=2')
       .then(response => {
         if (response.data.code === '200' && response.data.isSuccess) {
           const data: GameData = response.data.data[0];
@@ -72,7 +72,7 @@ const MatchList: React.FC = () => {
     if (selectedPlayer !== null) {
       axios
         .post(
-          `http://13.209.18.210/users/23/blocks?blockedUserId=${selectedPlayer}`,
+          `https://kusitms28.store/users/1/blocks?blockedUserId=${selectedPlayer}`,
         )
         .then(response => {
           console.log('User blocked successfully:', response.data);

@@ -14,7 +14,7 @@ const FavoriteList: React.FC = () => {
 
   const fetchFavorites = () => {
     axios
-      .get('http://13.209.18.210/users/1/favorites')
+      .get('https://kusitms28.store/users/1/favorites')
       .then(response => {
         if (response.data.code === '200' && response.data.isSuccess) {
           setFav(response.data.data);
@@ -55,7 +55,7 @@ const FavoriteList: React.FC = () => {
       .map(id => parseInt(id));
 
     axios
-      .delete('http://13.209.18.210/users/1/favorites', {
+      .delete('https://kusitms28.store/users/1/favorites', {
         data: selectedIds, // 요청 본문에 favoriteId 배열만 포함
       })
       .then(response => {

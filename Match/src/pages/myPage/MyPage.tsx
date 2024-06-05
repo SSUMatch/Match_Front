@@ -12,7 +12,7 @@ const MyPage = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get('http://13.209.18.210/users/1');
+        const response = await axios.get('https://kusitms28.store/users/1');
         if (response.data.code === '200' && response.data.isSuccess) {
           setUser(response.data.data);
         } else {
