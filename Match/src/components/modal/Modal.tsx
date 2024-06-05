@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigate} from 'react-router-dom';
 import * as S from './Styles';
 
 interface ModalProps {
@@ -7,11 +8,12 @@ interface ModalProps {
 }
 
 const Modal: React.FC<ModalProps> = ({isOpen}) => {
+  const navigate = useNavigate();
   if (!isOpen) return null;
 
   const handleConfirm = () => {
     console.log('모달 클릭');
-    window.location.href = 'http://localhost:3000';
+    navigate('/');
   };
 
   return (
