@@ -4,7 +4,7 @@ import Match from '@/components/match/Match.tsx';
 import WeekCalendar from '@/components/calendar/WeekCalendar.tsx';
 import ImageBanner from '@/components/imagebanner/ImageBanner.tsx';
 
-const bannerImageUrl = 'src/assets/mainImage.png';
+const bannerImageUrl = '/assets/mainImage.png';
 const Home = () => {
   return (
     <div>

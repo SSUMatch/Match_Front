@@ -6,7 +6,7 @@ import MatchInfo from '@/components/dropdown/matchinfo/MatchInfo.tsx';
 import PlaceInfo from '@/components/dropdown/placeinfo/PlaceInfo.tsx';
 import MatchDetail from '@/components/matchDetail/MatchDetail.tsx';
 
-const bannerImageUrl = 'src/assets/bannerImage.png';
+const bannerImageUrl = '/assets/bannerImage.png';
 const MatchPageDetail = () => {
   return (
     <div>
