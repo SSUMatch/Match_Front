@@ -58,6 +58,15 @@ export const TextWrap = styled.div`
   padding-bottom: 2rem;
 `;
 
+export const PaginationWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: ${Color.TrueWhite};
+  padding: 1rem 0; /* 위아래 여백 추가 */
+`;
 export const Pagination = tw.div`flex justify-center items-center mt-4`;
 export const PaginationButton = tw.button`px-4 py-2 mx-2 bg-gray-200 rounded disabled:opacity-50`;
 export const PageNumber = tw.span`px-4 py-2`;

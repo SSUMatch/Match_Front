@@ -68,13 +68,18 @@ const Match = () => {
           />
         </L.MatchItem>
       ))}
-      <L.Pagination>
-        <L.PaginationButton onClick={handlePreviousPage} disabled={page === 0}>
-          이전
-        </L.PaginationButton>
-        <L.PageNumber>{page + 1}</L.PageNumber>
-        <L.PaginationButton onClick={handleNextPage}>다음</L.PaginationButton>
-      </L.Pagination>
+      <L.PaginationWrap>
+        <L.Pagination>
+          <L.PaginationButton
+            onClick={handlePreviousPage}
+            disabled={page === 0}
+          >
+            이전
+          </L.PaginationButton>
+          <L.PageNumber>{page + 1}</L.PageNumber>
+          <L.PaginationButton onClick={handleNextPage}>다음</L.PaginationButton>
+        </L.Pagination>
+      </L.PaginationWrap>
     </L.ListContainer>
   );
 };
