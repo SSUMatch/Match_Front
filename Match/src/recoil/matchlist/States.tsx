@@ -1,9 +1,9 @@
 import {atom} from 'recoil';
 import {GameData} from '@/recoil/matchlist/Types.tsx';
 
-export const gameDataState = atom<GameData | null>({
+export const gameDataState = atom<GameData[]>({
   key: 'gameDataState',
-  default: null,
+  default: [],
 });
 
 export const selectedQuarterState = atom<string>({

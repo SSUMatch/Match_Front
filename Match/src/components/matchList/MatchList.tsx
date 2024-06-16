@@ -30,11 +30,14 @@ const getTeamImage = (team: string) => {
 };
 
 const MatchList: React.FC = () => {
-  const [gameData, setGameData] = useRecoilState(gameDataState);
+  const [gameData, setGameData] = useRecoilState<GameData[]>(gameDataState);
   const [selectedQuarter, setSelectedQuarter] =
     useRecoilState(selectedQuarterState);
   const [selectedTeam, setSelectedTeam] = useRecoilState(selectedTeamState);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState<{[key: number]: boolean}>(
+    {},
+  );
+
   const [selectedPlayer, setSelectedPlayer] = useState<number | null>(null);
 
   useEffect(() => {
@@ -42,9 +45,11 @@ const MatchList: React.FC = () => {
       .get('https://kusitms28.store/api/record?userId=2')
       .then(response => {
         if (response.data.code === '200' && response.data.isSuccess) {
-          const data: GameData = response.data.data[0];
+          const {data} = response.data;
           setGameData(data);
-          setSelectedQuarter(data.quarterRecords[0].quarter); // 처음 1쿼터 자동 선택
+          if (data.length > 0) {
+            setSelectedQuarter(data[0].quarterRecords[0].quarter); // 처음 1쿼터 자동 선택
+          }
         }
       })
       .catch(error => {
@@ -64,8 +69,11 @@ const MatchList: React.FC = () => {
     setSelectedPlayer(userId);
   };
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
+  const toggleDropdown = (index: number) => {
+    setDropdownOpen(prevState => ({
+      ...prevState,
+      [index]: !prevState[index],
+    }));
   };
 
   const blockUser = () => {
@@ -85,199 +93,199 @@ const MatchList: React.FC = () => {
 
   return (
     <S.AppContainer>
-      {gameData && (
-        <>
-          <S.GameInfo onClick={toggleDropdown}>
-            <S.InfoWrap>
-              <S.InfoItem>
-                <S.DateValue>{gameData.date}</S.DateValue>
-              </S.InfoItem>
-              <S.InfoItem>
-                <S.PlaceValue>{gameData.place}</S.PlaceValue>
-              </S.InfoItem>
-              <S.InfoItem>
-                <S.TypeValue>{gameData.type}</S.TypeValue>
-              </S.InfoItem>
-            </S.InfoWrap>
-            <S.ImgWrap>
-              {gameData.isPom && <S.POM src={POMImage} alt='POM' />}
-              <S.PointValue>
-                {gameData.point > 0
-                  ? `+${gameData.point}P`
-                  : `${gameData.point}P`}
-              </S.PointValue>
-            </S.ImgWrap>
-            <S.NumberColorImage src={Red2Image} alt='RED 2' />
-          </S.GameInfo>
+      {gameData.length > 0 &&
+        gameData.map((game, index) => (
+          <div key={index}>
+            <S.GameInfo onClick={() => toggleDropdown(index)}>
+              <S.InfoWrap>
+                <S.InfoItem>
+                  <S.DateValue>{game.date}</S.DateValue>
+                </S.InfoItem>
+                <S.InfoItem>
+                  <S.PlaceValue>{game.place}</S.PlaceValue>
+                </S.InfoItem>
+                <S.InfoItem>
+                  <S.TypeValue>{game.type}</S.TypeValue>
+                </S.InfoItem>
+              </S.InfoWrap>
+              <S.ImgWrap>
+                {game.isPom && <S.POM src={POMImage} alt='POM' />}
+                <S.PointValue>
+                  {game.point > 0 ? `+${game.point}P` : `${game.point}P`}
+                </S.PointValue>
+              </S.ImgWrap>
+              <S.NumberColorImage src={Red2Image} alt='RED 2' />
+            </S.GameInfo>
 
-          {dropdownOpen && (
-            <>
-              <S.QuarterButtonContainer>
-                {gameData.quarterRecords.map(record => (
-                  <S.QuarterButton
-                    key={record.quarter}
-                    onClick={() => handleQuarterChange(record.quarter)}
-                    active={selectedQuarter === record.quarter}
+            {dropdownOpen[index] && (
+              <>
+                <S.QuarterButtonContainer>
+                  {game.quarterRecords.map(record => (
+                    <S.QuarterButton
+                      key={record.quarter}
+                      onClick={() => handleQuarterChange(record.quarter)}
+                      active={selectedQuarter === record.quarter}
+                    >
+                      {record.quarter}
+                    </S.QuarterButton>
+                  ))}
+                </S.QuarterButtonContainer>
+
+                {selectedQuarter && (
+                  <S.QuarterInfo>
+                    {game.quarterRecords
+                      .filter(record => record.quarter === selectedQuarter)
+                      .map(record => (
+                        <div key={record.quarter}>
+                          <S.UpperContainer>
+                            <S.ScoreContainer>
+                              <S.TeamScore>
+                                <img
+                                  src={getTeamImage(record.team1)}
+                                  alt={record.team1}
+                                />
+                                <S.Score>{record.team1Goal}</S.Score>
+                                <S.Score>:</S.Score>
+                                <S.Score>{record.team2Goal}</S.Score>
+                                <img
+                                  src={getTeamImage(record.team2)}
+                                  alt={record.team2}
+                                />
+                              </S.TeamScore>
+                            </S.ScoreContainer>
+                            <S.TeamContainer>
+                              <S.Team>
+                                {record.team1Record.map(player => (
+                                  <S.PlayerStats key={player.num} active>
+                                    <img
+                                      src={getTeamImage(record.team1)}
+                                      alt={record.team1}
+                                    />
+                                    <p>{player.goal}</p>
+                                    <img src={GoalImage} alt='Goal' />
+                                    <p>{player.assist}</p>
+                                    <img src={AssistImage} alt='Assist' />
+                                    <p>{player.defense}</p>
+                                    <img src={DefenseImage} alt='Defense' />
+                                  </S.PlayerStats>
+                                ))}
+                              </S.Team>
+                              <S.Team>
+                                {record.team2Record.map(player => (
+                                  <S.PlayerStats key={player.num} active>
+                                    <img
+                                      src={getTeamImage(record.team2)}
+                                      alt={record.team2}
+                                    />
+                                    <p>{player.goal}</p>
+                                    <img src={GoalImage} alt='Goal' />
+                                    <p>{player.assist}</p>
+                                    <img src={AssistImage} alt='Assist' />
+                                    <p>{player.defense}</p>
+                                    <img src={DefenseImage} alt='Defense' />
+                                  </S.PlayerStats>
+                                ))}
+                              </S.Team>
+                            </S.TeamContainer>
+                          </S.UpperContainer>
+                        </div>
+                      ))}
+                  </S.QuarterInfo>
+                )}
+
+                <S.TeamButtonContainer>
+                  <S.TeamButton
+                    onClick={() => handleTeamChange('RED')}
+                    active={selectedTeam === 'RED'}
                   >
-                    {record.quarter}
-                  </S.QuarterButton>
-                ))}
-              </S.QuarterButtonContainer>
+                    레드팀
+                  </S.TeamButton>
+                  <S.TeamButton
+                    onClick={() => handleTeamChange('GREEN')}
+                    active={selectedTeam === 'GREEN'}
+                  >
+                    그린팀
+                  </S.TeamButton>
+                  <S.TeamButton
+                    onClick={() => handleTeamChange('BLUE')}
+                    active={selectedTeam === 'BLUE'}
+                  >
+                    블루팀
+                  </S.TeamButton>
+                </S.TeamButtonContainer>
 
-              {selectedQuarter && (
-                <S.QuarterInfo>
-                  {gameData.quarterRecords
-                    .filter(record => record.quarter === selectedQuarter)
-                    .map(record => (
-                      <div key={record.quarter}>
-                        <S.UpperContainer>
-                          <S.ScoreContainer>
-                            <S.TeamScore>
-                              <img
-                                src={getTeamImage(record.team1)}
-                                alt={record.team1}
-                              />
-                              <S.Score>{record.team1Goal}</S.Score>
-                              <S.Score>:</S.Score>
-                              <S.Score>{record.team2Goal}</S.Score>
-                              <img
-                                src={getTeamImage(record.team2)}
-                                alt={record.team2}
-                              />
-                            </S.TeamScore>
-                          </S.ScoreContainer>
-                          <S.TeamContainer>
-                            <S.Team>
-                              {record.team1Record.map(player => (
-                                <S.PlayerStats key={player.num} active>
-                                  <img
-                                    src={getTeamImage(record.team1)}
-                                    alt={record.team1}
-                                  />
-                                  <p>{player.goal}</p>
-                                  <img src={GoalImage} alt='Goal' />
-                                  <p>{player.assist}</p>
-                                  <img src={AssistImage} alt='Assist' />
-                                  <p>{player.defense}</p>
-                                  <img src={DefenseImage} alt='Defense' />
-                                </S.PlayerStats>
-                              ))}
-                            </S.Team>
-                            <S.Team>
-                              {record.team2Record.map(player => (
-                                <S.PlayerStats key={player.num} active>
-                                  <img
-                                    src={getTeamImage(record.team2)}
-                                    alt={record.team2}
-                                  />
-                                  <p>{player.goal}</p>
-                                  <img src={GoalImage} alt='Goal' />
-                                  <p>{player.assist}</p>
-                                  <img src={AssistImage} alt='Assist' />
-                                  <p>{player.defense}</p>
-                                  <img src={DefenseImage} alt='Defense' />
-                                </S.PlayerStats>
-                              ))}
-                            </S.Team>
-                          </S.TeamContainer>
-                        </S.UpperContainer>
-                      </div>
+                {selectedTeam === 'RED' && (
+                  <S.TeamInfo>
+                    {game.redTeam.map(player => (
+                      <S.PlayerStats
+                        key={player.userId}
+                        onClick={() => handlePlayerSelect(player.userId)}
+                        active={selectedPlayer === player.userId}
+                      >
+                        <S.PlayerSelectButton
+                          active={selectedPlayer === player.userId}
+                        />
+                        <img
+                          src={getTeamImage(player.color)}
+                          alt={player.color}
+                        />
+                        <p>{player.name}</p>
+                        <p>{player.age}세</p>
+                        <p>{player.location}</p>
+                      </S.PlayerStats>
                     ))}
-                </S.QuarterInfo>
-              )}
-              <S.TeamButtonContainer>
-                <S.TeamButton
-                  onClick={() => handleTeamChange('RED')}
-                  active={selectedTeam === 'RED'}
-                >
-                  레드팀
-                </S.TeamButton>
-                <S.TeamButton
-                  onClick={() => handleTeamChange('GREEN')}
-                  active={selectedTeam === 'GREEN'}
-                >
-                  그린팀
-                </S.TeamButton>
-                <S.TeamButton
-                  onClick={() => handleTeamChange('BLUE')}
-                  active={selectedTeam === 'BLUE'}
-                >
-                  블루팀
-                </S.TeamButton>
-              </S.TeamButtonContainer>
+                  </S.TeamInfo>
+                )}
+                {selectedTeam === 'GREEN' && (
+                  <S.TeamInfo>
+                    {game.greenTeam.map(player => (
+                      <S.PlayerStats
+                        key={player.userId}
+                        onClick={() => handlePlayerSelect(player.userId)}
+                        active={selectedPlayer === player.userId}
+                      >
+                        <S.PlayerSelectButton
+                          active={selectedPlayer === player.userId}
+                        />
+                        <img
+                          src={getTeamImage(player.color)}
+                          alt={player.color}
+                        />
+                        <p>{player.name}</p>
+                        <p>{player.age}세</p>
+                        <p>{player.location}</p>
+                      </S.PlayerStats>
+                    ))}
+                  </S.TeamInfo>
+                )}
+                {selectedTeam === 'BLUE' && (
+                  <S.TeamInfo>
+                    {game.blueTeam.map(player => (
+                      <S.PlayerStats
+                        key={player.userId}
+                        onClick={() => handlePlayerSelect(player.userId)}
+                        active={selectedPlayer === player.userId}
+                      >
+                        <S.PlayerSelectButton
+                          active={selectedPlayer === player.userId}
+                        />
+                        <img
+                          src={getTeamImage(player.color)}
+                          alt={player.color}
+                        />
+                        <p>{player.name}</p>
+                        <p>{player.age}세</p>
+                        <p>{player.location}</p>
+                      </S.PlayerStats>
+                    ))}
+                  </S.TeamInfo>
+                )}
 
-              {selectedTeam === 'RED' && (
-                <S.TeamInfo>
-                  {gameData.redTeam.map(player => (
-                    <S.PlayerStats
-                      key={player.userId}
-                      onClick={() => handlePlayerSelect(player.userId)}
-                      active={selectedPlayer === player.userId}
-                    >
-                      <S.PlayerSelectButton
-                        active={selectedPlayer === player.userId}
-                      />
-                      <img
-                        src={getTeamImage(player.color)}
-                        alt={player.color}
-                      />
-                      <p>{player.name}</p>
-                      <p>{player.age}세</p>
-                      <p>{player.location}</p>
-                    </S.PlayerStats>
-                  ))}
-                </S.TeamInfo>
-              )}
-              {selectedTeam === 'GREEN' && (
-                <S.TeamInfo>
-                  {gameData.greenTeam.map(player => (
-                    <S.PlayerStats
-                      key={player.userId}
-                      onClick={() => handlePlayerSelect(player.userId)}
-                      active={selectedPlayer === player.userId}
-                    >
-                      <S.PlayerSelectButton
-                        active={selectedPlayer === player.userId}
-                      />
-                      <img
-                        src={getTeamImage(player.color)}
-                        alt={player.color}
-                      />
-                      <p>{player.name}</p>
-                      <p>{player.age}세</p>
-                      <p>{player.location}</p>
-                    </S.PlayerStats>
-                  ))}
-                </S.TeamInfo>
-              )}
-              {selectedTeam === 'BLUE' && (
-                <S.TeamInfo>
-                  {gameData.blueTeam.map(player => (
-                    <S.PlayerStats
-                      key={player.userId}
-                      onClick={() => handlePlayerSelect(player.userId)}
-                      active={selectedPlayer === player.userId}
-                    >
-                      <S.PlayerSelectButton
-                        active={selectedPlayer === player.userId}
-                      />
-                      <img
-                        src={getTeamImage(player.color)}
-                        alt={player.color}
-                      />
-                      <p>{player.name}</p>
-                      <p>{player.age}세</p>
-                      <p>{player.location}</p>
-                    </S.PlayerStats>
-                  ))}
-                </S.TeamInfo>
-              )}
-
-              <S.BlockButton onClick={blockUser}>차단하기</S.BlockButton>
-            </>
-          )}
-        </>
-      )}
+                <S.BlockButton onClick={blockUser}>차단하기</S.BlockButton>
+              </>
+            )}
+          </div>
+        ))}
     </S.AppContainer>
   );
 };
