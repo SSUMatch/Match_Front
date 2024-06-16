@@ -16,11 +16,9 @@ const MatchDetail: React.FC = () => {
     setIsFavorite(!isFavorite);
     try {
       const response = await axios.post(
-        'https://kusitms28.store/users/2/favorites',
-        {
-          location: matchDetail.location,
-          placeName: matchDetail.placeName,
-        },
+        `https://kusitms28.store/users/2/favorites?location=${encodeURIComponent(
+          matchDetail.location,
+        )}&placeName=${encodeURIComponent(matchDetail.placeName)}`,
       );
       if (response.data.code === '200' && response.data.isSuccess) {
         console.log('Favorite added with ID:', response.data.data.favoriteId);
