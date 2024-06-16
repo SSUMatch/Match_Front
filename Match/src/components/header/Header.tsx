@@ -1,10 +1,17 @@
 import {useNavigate} from 'react-router-dom';
+import {useContext} from 'react';
 import * as H from './Styles';
 import {LoggedOut} from '@/components/auth/LoggedOut.tsx';
 import Logo from '@/assets/svg/logo.svg?react';
+import {AuthContext} from '@/components/auth/AuthProvider.tsx';
+import {LoggedIn} from '@/components/auth/LoggedIn.tsx';
 
 const Header = () => {
   const navigate = useNavigate();
+
+  // const user = useRecoilValue<LoginProps>(userAtom);
+  const {logoutHandler, isLoggedIn} = useContext(AuthContext);
+
   return (
     <H.Header>
       <H.RightContainer>
@@ -14,15 +21,11 @@ const Header = () => {
             SSU Match{/* <HeaderIcon onClick={() => navigate("/")} /> */}
           </H.LogoWrap>
           <H.Gap>
-            <LoggedOut />
-            {/* {LoggedIn ? ( */}
-            {/*   <div> */}
-            {/*     <H.Button onClick={MypageHandler}>마이페이지</H.Button> */}
-            {/*     <H.Button onClick={handleLogout}>로그아웃</H.Button> */}
-            {/*   </div> */}
-            {/* ) : ( */}
-            {/*   <LoggedOut /> */}
-            {/* )} */}
+            {isLoggedIn ? (
+              <LoggedIn logoutHandler={logoutHandler} />
+            ) : (
+              <LoggedOut />
+            )}
           </H.Gap>
         </H.RowContainer>
       </H.RightContainer>
