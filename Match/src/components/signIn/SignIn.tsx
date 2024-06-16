@@ -1,25 +1,24 @@
 import axios from 'axios';
-import {useState} from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {useNavigate} from 'react-router-dom';
 import * as S from './Styles';
 import {SignInProps} from '@/constants/Interfaces';
 import {defaultSignInFormValue} from '@/constants/DefaultFormOptions';
 import FormRequirements from '@/constants/FormRequirements';
+import Select from './Select';
+import {
+  genderOptions,
+  locationOptions,
+  positionOptions,
+} from '@/constants/SelectOptions';
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const [gender, setGender] = useState('');
-
-  const handleButtonClick = (selectedGender: string) => {
-    setGender(selectedGender); // 클릭된 버튼의 상태를 업데이트
-  };
 
   const onSubmitHandler: SubmitHandler<SignInProps> = async data => {
     try {
       const formData = {
         ...data,
-        gender, // gender 값을 추가
       };
 
       console.log('폼데이터 : ', formData);
@@ -40,10 +39,6 @@ const SignIn = () => {
         navigate('/');
       } else if (res.status === 400) {
         alert('이미 존재하는 유저입니다.');
-      }
-
-      if (!gender) {
-        alert('성별을 선택해주세요.');
       }
     } catch (error) {
       console.error(error);
@@ -75,7 +70,10 @@ const SignIn = () => {
           <S.InputLarge
             type='text'
             placeholder='아이디를 입력하세요'
-            {...register('id', idRequirements)}
+            name='id'
+            ref={register('id', idRequirements).ref}
+            onChange={register('id', idRequirements).onChange}
+            onBlur={register('id', idRequirements).onBlur}
           />
           {errors.id && <S.ErrorDiv>{errors.id.message}</S.ErrorDiv>}
         </S.Box>
@@ -85,7 +83,10 @@ const SignIn = () => {
           <S.InputLarge
             type='password'
             placeholder='비밀번호를 입력하세요'
-            {...register('password', passwordRequirements)}
+            name='password'
+            ref={register('password', passwordRequirements).ref}
+            onChange={register('password', passwordRequirements).onChange}
+            onBlur={register('password', passwordRequirements).onBlur}
           />
           {errors.password && (
             <S.ErrorDiv>{errors.password.message}</S.ErrorDiv>
@@ -96,7 +97,10 @@ const SignIn = () => {
           <S.InputLarge
             type='text'
             placeholder='이름을 입력하세요'
-            {...register('name', nameRequirements)}
+            name='name'
+            ref={register('name', nameRequirements).ref}
+            onChange={register('name', nameRequirements).onChange}
+            onBlur={register('name', nameRequirements).onBlur}
           />
           {errors.name && <S.ErrorDiv>{errors.name.message}</S.ErrorDiv>}
         </S.Box>
@@ -106,51 +110,50 @@ const SignIn = () => {
           <S.InputLarge
             type='number'
             placeholder='나이를 입력하세요'
-            {...register('age', ageRequirements)}
+            name='age'
+            ref={register('age', ageRequirements).ref}
+            onChange={register('age', ageRequirements).onChange}
+            onBlur={register('age', ageRequirements).onBlur}
           />
           {errors.age && <S.ErrorDiv>{errors.age.message}</S.ErrorDiv>}
         </S.Box>
+
         <S.Box>
           <S.InputLabel>성별</S.InputLabel>
-          <div>
-            <S.Genderbutton
-              type='button'
-              isselected={gender === 'MALE'}
-              onClick={() => handleButtonClick('MALE')}
-            >
-              남자
-            </S.Genderbutton>
-            <S.Genderbutton
-              type='button'
-              isselected={gender === 'FEMALE'}
-              onClick={() => handleButtonClick('FEMALE')}
-            >
-              여자
-            </S.Genderbutton>
-          </div>
-        </S.Box>
-        <S.Box>
-          <S.InputLabel>위치</S.InputLabel>
-          <S.InputLarge
-            type='text'
-            placeholder='위치를 입력하세요'
-            {...register('loacation', {required: '위치를 입력해주세요'})}
+          <Select
+            label='성별'
+            name='gender'
+            options={genderOptions}
+            register={register}
+            placeholder='성별을 선택하세요'
+            error={errors.gender?.message}
           />
-          {errors.loacation && (
-            <S.ErrorDiv>{errors.loacation.message}</S.ErrorDiv>
-          )}
         </S.Box>
+
         <S.Box>
-          <S.InputLabel>포지션</S.InputLabel>
-          <S.InputLarge
-            type='text'
-            placeholder='포지션을 입력하세요'
-            {...register('position', {required: '포지션을 입력해주세요'})}
+          <S.InputLabel>활동 지역</S.InputLabel>
+          <Select
+            label='위치'
+            name='loacation'
+            options={locationOptions}
+            register={register}
+            placeholder='활동 지역을 선택하세요'
+            error={errors.loacation?.message}
           />
-          {errors.position && (
-            <S.ErrorDiv>{errors.position.message}</S.ErrorDiv>
-          )}
         </S.Box>
+
+        <S.Box>
+          <S.InputLabel>선호 포지션</S.InputLabel>
+          <Select
+            label='포지션'
+            name='position'
+            options={positionOptions}
+            register={register}
+            placeholder='선호 포지션을 선택하세요'
+            error={errors.position?.message}
+          />
+        </S.Box>
+
         <S.Box>
           <S.SubmitButton type='submit'>회원가입</S.SubmitButton>
         </S.Box>
