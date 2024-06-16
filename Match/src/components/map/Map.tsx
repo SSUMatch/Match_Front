@@ -48,7 +48,7 @@ const MapComponent: React.FC = () => {
       // Kakao map script가 로드되지 않은 경우, 로드된 후 initMap 실행
       const script = document.createElement('script');
       script.src =
-        '//dapi.kakao.com/v2/maps/sdk.js?appkey=c4a9e063ca0850b14f56e1b0b7fb6457&autoload=false&libraries=services';
+        '//dapi.kakao.com/v2/maps/sdk.js?appkey=c84b897b954b779dee56f5cc8b541cad&autoload=false&libraries=services';
       script.onload = () => window.kakao.maps.load(initMap);
       document.head.appendChild(script);
     }
