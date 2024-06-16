@@ -1,10 +1,13 @@
 import React, {useState, useMemo} from 'react';
+import {useSetRecoilState} from 'recoil';
 import {startOfWeek, format, addDays, subWeeks, addWeeks} from 'date-fns';
 import tw from 'twin.macro';
 import {FiChevronLeft, FiChevronRight} from 'react-icons/fi';
+import {SelectedDateState} from '@/recoil/match/States';
 
 const WeekCalendar: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const setSelectedDate = useSetRecoilState(SelectedDateState);
 
   const startDay = useMemo(
     () => startOfWeek(currentDate, {weekStartsOn: 0}),
@@ -25,21 +28,21 @@ const WeekCalendar: React.FC = () => {
     setCurrentDate(addWeeks(currentDate, 1));
   };
 
+  const handleDayClick = (day: Date) => {
+    setSelectedDate(day);
+  };
+
   return (
     <div css={tw`text-4xl`}>
-      {' '}
-      {/* 전체 글씨 크기를 조정하는 스타일 */}
       <div css={tw`flex justify-between items-center p-4`}>
         <button
           onClick={previousWeek}
           css={tw`cursor-pointer outline-none focus:outline-none`}
           aria-label='Previous week'
         >
-          <FiChevronLeft size={36} /> {/* 아이콘 크기 조정 */}
+          <FiChevronLeft size={36} />
         </button>
         <div css={tw`text-4xl font-bold`}>
-          {' '}
-          {/* 월, 년 표시 글씨 크기 조정 */}
           {format(currentDate, 'MMMM yyyy')}
         </div>
         <button
@@ -47,7 +50,7 @@ const WeekCalendar: React.FC = () => {
           css={tw`cursor-pointer outline-none focus:outline-none`}
           aria-label='Next week'
         >
-          <FiChevronRight size={36} /> {/* 아이콘 크기 조정 */}
+          <FiChevronRight size={36} />
         </button>
       </div>
       <div css={tw`grid grid-cols-7 gap-4 p-4`}>
@@ -55,24 +58,19 @@ const WeekCalendar: React.FC = () => {
           <div
             key={day.toISOString()}
             css={[
-              tw`flex flex-col items-center justify-center p-4 rounded-lg`,
+              tw`flex flex-col items-center justify-center p-4 rounded-lg cursor-pointer`,
               format(day, 'eee') === 'Sun'
                 ? tw`text-red-600`
                 : format(day, 'eee') === 'Sat'
                   ? tw`text-blue-600`
                   : tw`text-gray-600`,
             ]}
+            onClick={() => handleDayClick(day)}
           >
             <div css={tw`font-medium text-3xl uppercase`}>
-              {' '}
-              {/* 요일 글씨 크기 조정 */}
               {format(day, 'EEE')}
             </div>
-            <div css={tw`mt-8 text-3xl`}>
-              {' '}
-              {/* 날짜 글씨 크기 조정 */}
-              {format(day, 'd')}
-            </div>
+            <div css={tw`mt-8 text-3xl`}>{format(day, 'd')}</div>
           </div>
         ))}
       </div>

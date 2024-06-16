@@ -1,24 +1,28 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
 import {useNavigate} from 'react-router-dom';
-import {MatchListState} from '@/recoil/match/States.tsx';
-import * as L from './Styles.tsx';
-import MatchStatus from './matchstatus/MatchStatus.tsx';
+import {format} from 'date-fns';
+import {MatchListState, SelectedDateState} from '@/recoil/match/States';
+import * as L from './Styles';
+import MatchStatus from './matchstatus/MatchStatus';
 
 const Match = () => {
   const matches = useRecoilValue(MatchListState);
   const setMatches = useSetRecoilState(MatchListState);
+  const selectedDate = useRecoilValue(SelectedDateState);
   const navigate = useNavigate();
+  const [page, setPage] = useState(0);
+  const take = 5; // 한 페이지에 나올 항목의 수
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('https://kusitms28.store/match', {
           params: {
-            page: 0,
-            take: 2,
-            date: '2023-06-02', // 변경된 date 값
+            page,
+            take,
+            date: format(selectedDate, 'yyyy-MM-dd'),
           },
           headers: {
             'Content-Type': 'application/json',
@@ -35,10 +39,18 @@ const Match = () => {
     };
 
     fetchData();
-  }, [setMatches]); // 의존성 배열에 setMatches 추가
+  }, [selectedDate, page, setMatches]);
 
   const handleStatusClick = () => {
     navigate('/test');
+  };
+
+  const handlePreviousPage = () => {
+    setPage(prevPage => Math.max(prevPage - 1, 0));
+  };
+
+  const handleNextPage = () => {
+    setPage(prevPage => prevPage + 1);
   };
 
   return (
@@ -56,6 +68,13 @@ const Match = () => {
           />
         </L.MatchItem>
       ))}
+      <L.Pagination>
+        <L.PaginationButton onClick={handlePreviousPage} disabled={page === 0}>
+          이전
+        </L.PaginationButton>
+        <L.PageNumber>{page + 1}</L.PageNumber>
+        <L.PaginationButton onClick={handleNextPage}>다음</L.PaginationButton>
+      </L.Pagination>
     </L.ListContainer>
   );
 };

@@ -10,3 +10,8 @@ export const MatchListState = atom<T.MatchListTypes[]>({
   key: 'MatchListState',
   default: [],
 });
+
+export const SelectedDateState = atom({
+  key: 'SelectedDateState',
+  default: new Date(),
+});
