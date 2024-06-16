@@ -11,7 +11,7 @@ const BlockList: React.FC = () => {
 
   const fetchBlocks = () => {
     axios
-      .get('https://kusitms28.store/users/1/blocks')
+      .get('https://kusitms28.store/users/2/blocks')
       .then(response => {
         if (response.data.code === '200' && response.data.isSuccess) {
           setBlocks(response.data.data);
@@ -53,7 +53,7 @@ const BlockList: React.FC = () => {
 
     Promise.all(
       selectedIds.map(id =>
-        axios.delete(`https://kusitms28.store/users/1/blocks/${id}`),
+        axios.delete(`https://kusitms28.store/users/2/blocks/${id}`),
       ),
     )
       .then(responses => {
