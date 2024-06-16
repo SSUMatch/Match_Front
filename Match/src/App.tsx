@@ -14,6 +14,7 @@ import Block from '@/pages/block/Block.tsx';
 import SignInPage from '@/pages/signIn/SignIn.tsx';
 import {AuthProvider} from '@/components/auth/AuthProvider.tsx';
 import PlaceMatch from '@/pages/placeMatches/PlaceMatch.tsx';
+import Graph from '@/pages/graph/Graph.tsx';
 // import { AuthProvider } from "./components/auth/AuthProvider.tsx";
 
 const loading = <div>화면 로딩중...</div>;
@@ -41,6 +42,7 @@ const App = () => {
               <Route path='signin' element={<SignInPage />} />
               <Route path='mypage' element={<MyPage />} />
               <Route path='block' element={<Block />} />
+              <Route path='graph' element={<Graph />} />
               <Route path='places/:placeId/matches' element={<PlaceMatch />} />
               <Route
                 path='match/detail/:matchId'

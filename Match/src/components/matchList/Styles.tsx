@@ -12,6 +12,25 @@ export const AppContainer = styled.div`
   height: auto;
 `;
 
+export const GraphButton = styled.button`
+  display: block;
+  //margin: 0 auto 10px auto;
+  margin-left: auto;
+  margin-right: 1rem;
+  padding: 10px 20px;
+  font-size: ${Font.SIZE.BODY1};
+  font-weight: ${Font.WEIGHT.BOLD};
+  color: ${Color.TrueWhite};
+  background-color: ${Color.Bar};
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${Color.Gold};
+  }
+`;
+
 export const GameInfo = styled.div`
   display: flex;
   background-color: ${Color.LightBlue};

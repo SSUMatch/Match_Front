@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useRecoilState} from 'recoil';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 import {
   gameDataState,
   selectedQuarterState,
@@ -30,6 +31,11 @@ const getTeamImage = (team: string) => {
 };
 
 const MatchList: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate('/graph');
+  };
   const [gameData, setGameData] = useRecoilState<GameData[]>(gameDataState);
   const [selectedQuarter, setSelectedQuarter] =
     useRecoilState(selectedQuarterState);
@@ -93,6 +99,7 @@ const MatchList: React.FC = () => {
 
   return (
     <S.AppContainer>
+      <S.GraphButton onClick={handleNavigate} />
       {gameData.length > 0 &&
         gameData.map((game, index) => (
           <div key={index}>

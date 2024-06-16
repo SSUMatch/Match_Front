@@ -10,6 +10,7 @@ const NearBy = React.lazy(() => import('./pages/nearBy/NearBy.tsx'));
 const Login = React.lazy(() => import('./pages/login/Login.tsx'));
 const Mypage = React.lazy(() => import('./pages/myPage/MyPage.tsx'));
 const Block = React.lazy(() => import('./pages/block/Block.tsx'));
+const Graph = React.lazy(() => import('./pages/graph/Graph.tsx'));
 const PlaceMatch = React.lazy(
   () => import('./pages/placeMatches/PlaceMatch.tsx'),
 );
@@ -26,6 +27,7 @@ const routes = [
   {path: '/nearby', element: NearBy},
   {path: '/block', element: Block},
   {path: '/mypage', element: Mypage},
+  {path: '/graph', element: Graph},
   {path: 'places/:placeId/matches', element: PlaceMatch},
   {path: 'match/detail/:matchId', element: MatchPageDetail},
 ];
