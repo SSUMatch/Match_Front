@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {SubmitHandler, useForm} from 'react-hook-form';
 import {useNavigate} from 'react-router-dom';
+import {useState} from 'react';
 import * as S from './Styles';
 import {SignInProps} from '@/constants/Interfaces';
 import {defaultSignInFormValue} from '@/constants/DefaultFormOptions';
@@ -11,9 +12,11 @@ import {
   locationOptions,
   positionOptions,
 } from '@/constants/SelectOptions';
+import Modal from '@/components/modal/Modal.tsx';
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onSubmitHandler: SubmitHandler<SignInProps> = async data => {
     try {
@@ -35,8 +38,7 @@ const SignIn = () => {
 
       if (res.status === 200) {
         console.log(res.data);
-        alert('회원가입이 완료되었습니다.');
-        navigate('/');
+        setIsModalOpen(true);
       } else if (res.status === 400) {
         alert('이미 존재하는 유저입니다.');
       }
@@ -158,6 +160,14 @@ const SignIn = () => {
           <S.SubmitButton type='submit'>회원가입</S.SubmitButton>
         </S.Box>
       </form>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+          navigate('/');
+        }}
+        message='회원가입이 완료되었습니다.'
+      />
     </S.Layout>
   );
 };

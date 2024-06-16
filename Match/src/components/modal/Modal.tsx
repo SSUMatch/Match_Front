@@ -5,14 +5,15 @@ import * as S from './Styles';
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  message: string;
 }
 
-const Modal: React.FC<ModalProps> = ({isOpen}) => {
+const Modal: React.FC<ModalProps> = ({isOpen, onClose, message}) => {
   const navigate = useNavigate();
   if (!isOpen) return null;
 
   const handleConfirm = () => {
-    console.log('모달 클릭');
+    onClose();
     navigate('/');
   };
 
@@ -20,7 +21,7 @@ const Modal: React.FC<ModalProps> = ({isOpen}) => {
     <S.ModalOverlay>
       <S.ModalContent>
         <S.ModalHeader>알림</S.ModalHeader>
-        <S.ModalBody>매치 신청이 완료되었습니다</S.ModalBody>
+        <S.ModalBody>{message}</S.ModalBody> {/* 메시지를 출력 */}
         <S.ModalFooter>
           <S.ModalButton onClick={handleConfirm}>확인</S.ModalButton>
         </S.ModalFooter>

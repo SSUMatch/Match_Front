@@ -45,7 +45,11 @@ const MatchDetail: React.FC<MatchDetailProps> = ({
       <S.ApplyWrapper>
         <S.ApplyButton onClick={handleApply}>매치 신청</S.ApplyButton>
       </S.ApplyWrapper>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        message='매치 신청이 완료되었습니다.'
+      />
     </S.LabelContainer>
   );
 };

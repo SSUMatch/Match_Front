@@ -24,6 +24,7 @@
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.23.0",
     "recoil": "^0.7.7",
+    "recoil-persist": "^5.1.0",
     "twin.macro": "^3.4.1"
   },
   "devDependencies": {
