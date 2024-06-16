@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useRecoilState} from 'recoil';
+import {useNavigate} from 'react-router-dom';
 import * as L from './Styles';
 import {FavState} from '@/recoil/match/States';
 import * as T from '@/recoil/match/Types';
@@ -11,10 +12,11 @@ const FavoriteList: React.FC = () => {
   const [fav, setFav] = useRecoilState(FavState);
   const [clicked, setClicked] = useState<{[key: number]: boolean}>({});
   const [allSelected, setAllSelected] = useState(false);
+  const navigate = useNavigate();
 
   const fetchFavorites = () => {
     axios
-      .get('https://kusitms28.store/users/1/favorites')
+      .get('https://kusitms28.store/users/2/favorites')
       .then(response => {
         if (response.data.code === '200' && response.data.isSuccess) {
           setFav(response.data.data);
@@ -55,7 +57,7 @@ const FavoriteList: React.FC = () => {
       .map(id => parseInt(id));
 
     axios
-      .delete('https://kusitms28.store/users/1/favorites', {
+      .delete('https://kusitms28.store/users/2/favorites', {
         data: selectedIds, // 요청 본문에 favoriteId 배열만 포함
       })
       .then(response => {
@@ -94,6 +96,10 @@ const FavoriteList: React.FC = () => {
 
   const groupedFavorites = groupByRegion(fav);
 
+  const handlePlaceClick = (placeId: number) => {
+    navigate(`/places/${placeId}/matches`);
+  };
+
   return (
     <L.ListContainer>
       <L.Title>즐겨찾는 구장</L.Title>
@@ -104,8 +110,16 @@ const FavoriteList: React.FC = () => {
         <div key={region}>
           <L.RegionLabel>{region}</L.RegionLabel>
           {groupedFavorites[region].map(m => (
-            <L.FavItem key={m.favoriteId}>
-              <L.IconWrap onClick={() => handleIconClick(m.favoriteId)}>
+            <L.FavItem
+              key={m.favoriteId}
+              onClick={() => handlePlaceClick(m.placeId)}
+            >
+              <L.IconWrap
+                onClick={e => {
+                  e.stopPropagation();
+                  handleIconClick(m.favoriteId);
+                }}
+              >
                 {clicked[m.favoriteId] ? <FavClickedIcon /> : <FavIcon />}
               </L.IconWrap>
               <L.NameWrap>{m.name}</L.NameWrap>

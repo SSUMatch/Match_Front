@@ -55,7 +55,7 @@ export const Input = styled.input`
 
 export const SubmitButton = styled.button`
   width: 100%;
-  background: ${Colors.MainColor};
+  background: ${Colors.Applying};
   border: none;
   border-radius: 1.2rem;
   height: 4.7rem;

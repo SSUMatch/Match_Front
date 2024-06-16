@@ -11,7 +11,9 @@ const Test = React.lazy(() => import('./pages/matchDetail/MatchDetail.tsx'));
 const Login = React.lazy(() => import('./pages/login/Login.tsx'));
 const Mypage = React.lazy(() => import('./pages/myPage/MyPage.tsx'));
 const Block = React.lazy(() => import('./pages/block/Block.tsx'));
-
+const PlaceMatch = React.lazy(
+  () => import('./pages/placeMatches/PlaceMatch.tsx'),
+);
 const routes = [
   {path: '/', element: Home},
   {path: '/login', element: Login},
@@ -23,6 +25,7 @@ const routes = [
   {path: '/test', element: Test},
   {path: '/block', element: Block},
   {path: '/mypage', element: Mypage},
+  {path: 'places/:placeId/matches', element: PlaceMatch},
 ];
 
 export default routes;
