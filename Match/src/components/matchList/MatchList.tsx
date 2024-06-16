@@ -72,7 +72,7 @@ const MatchList: React.FC = () => {
     if (selectedPlayer !== null) {
       axios
         .post(
-          `https://kusitms28.store/users/1/blocks?blockedUserId=${selectedPlayer}`,
+          `https://kusitms28.store/users/2/blocks?blockedUserId=${selectedPlayer}`,
         )
         .then(response => {
           console.log('User blocked successfully:', response.data);

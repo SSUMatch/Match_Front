@@ -41,8 +41,8 @@ const Match = () => {
     fetchData();
   }, [selectedDate, page, setMatches]);
 
-  const handleStatusClick = () => {
-    navigate('/test');
+  const handleStatusClick = (matchId: number) => {
+    navigate(`/match/detail/${matchId}`);
   };
 
   const handlePreviousPage = () => {
@@ -64,7 +64,7 @@ const Match = () => {
           </L.TitleWrap>
           <MatchStatus
             status={m.status as '신청' | '마감 임박' | '마감'}
-            onClick={handleStatusClick}
+            onClick={() => handleStatusClick(m.matchId)}
           />
         </L.MatchItem>
       ))}

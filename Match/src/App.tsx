@@ -6,7 +6,7 @@ import Favorites from '@/pages/favorites/Favorites.tsx';
 import Archive from '@/pages/archive/Archive.tsx';
 import Ranking from '@/pages/ranking/Ranking.tsx';
 import NearBy from '@/pages/nearBy/NearBy.tsx';
-import Test from '@/pages/matchDetail/MatchDetail.tsx';
+import MatchPageDetail from '@/pages/matchDetail/MatchDetail.tsx';
 import DefaultLayout from './layout/DefaultLayout.tsx';
 import Login from '@/pages/login/Login.tsx';
 import MyPage from '@/pages/myPage/MyPage.tsx';
@@ -37,12 +37,15 @@ const App = () => {
               <Route path='archive' element={<Archive />} />
               <Route path='ranking' element={<Ranking />} />
               <Route path='nearby' element={<NearBy />} />
-              <Route path='test' element={<Test />} />
               <Route path='login' element={<Login />} />
               <Route path='signin' element={<SignInPage />} />
               <Route path='mypage' element={<MyPage />} />
               <Route path='block' element={<Block />} />
               <Route path='places/:placeId/matches' element={<PlaceMatch />} />
+              <Route
+                path='match/detail/:matchId'
+                element={<MatchPageDetail />}
+              />
             </Route>
           </Routes>
         </Suspense>
