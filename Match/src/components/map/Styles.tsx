@@ -44,14 +44,16 @@ export const MapContainer = styled.div`
   height: 66rem;
 `;
 
-export const PlacesList = styled.div`
+export const PlacesList = styled.ul`
   list-style-type: none;
   padding: 0;
   width: 100%;
-  height: 112rem;
+  max-height: 112rem; /* 최대 높이 설정 */
+  overflow-y: auto; /* 세로 스크롤바 추가 */
 `;
 
-export const PlaceItem = styled.div`
+export const PlaceItem = styled.li`
+  height: 12rem;
   display: flex;
   align-items: center;
   border-bottom: 0.1rem solid ${Color.Gray20};
@@ -59,22 +61,49 @@ export const PlaceItem = styled.div`
 
 export const PlaceName = styled.div`
   display: flex;
-  width: 17.6rem;
-  height: 14rem;
+  width: 25rem;
   align-items: center;
   justify-content: center;
   font-size: ${Font.SIZE.TITLE3};
-  font-weight: ${Font.WEIGHT.BOLD};
+  font-weight: ${Font.WEIGHT.MEDIUM};
   font-family: 'Pretendard', sans-serif;
 `;
 
 export const PlaceDistance = styled.div`
   display: flex;
   align-items: center;
-  width: auto;
-  height: 8rem;
+  justify-content: center;
+  width: 14rem;
   font-size: ${Font.SIZE.TITLE3};
-  font-weight: ${Font.WEIGHT.SEMIBOLD};
+  font-weight: ${Font.WEIGHT.MEDIUM};
   font-family: 'Pretendard', sans-serif;
-  padding-top: 2rem;
+`;
+
+export const PlaceLabel = styled.div`
+  display: flex;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  font-size: ${Font.SIZE.TITLE1};
+  font-weight: ${Font.WEIGHT.SEMIBOLD};
+`;
+
+export const MapBtn = styled.div`
+  width: 12rem;
+  height: 4.5rem;
+  display: flex;
+  margin-left: auto;
+  margin-right: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: ${Font.SIZE.BODY3};
+  font-weight: ${Font.WEIGHT.REGULAR};
+  border-radius: 4rem;
+  border: 1px solid ${Color.BorderBlue};
+  //color: ${Color.Gray90};
+  color: ${Color.MainColor};
+  background: ${Color.TrueWhite};
+  &:hover {
+    cursor: pointer;
+  }
 `;

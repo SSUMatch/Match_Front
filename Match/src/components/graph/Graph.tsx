@@ -73,8 +73,8 @@ const PointGraph: React.FC = () => {
           text: 'MMR',
         },
         beginAtZero: true,
-        min: 1000,
-        max: 2000,
+        min: 1400,
+        max: 1600,
       },
     },
   };

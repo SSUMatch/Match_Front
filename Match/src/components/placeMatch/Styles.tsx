@@ -6,7 +6,8 @@ export const ListContainer = styled.ul`
   list-style-type: none;
   padding: 0;
   width: 100%;
-  height: 112rem;
+  max-height: 112rem; /* 최대 높이 설정 */
+  overflow-y: auto; /* 세로 스크롤바 추가 */
 `;
 
 export const MatchItem = styled.li`

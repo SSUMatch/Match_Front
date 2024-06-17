@@ -1,12 +1,14 @@
-import {useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {useRecoilState} from 'recoil';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 import MapComponent from '@/components/map/Map';
 import * as S from '@/components/map/Styles';
 import {PlacesState} from '@/recoil/place/States';
 
-const NearBy = () => {
+const NearBy: React.FC = () => {
   const [places, setPlaces] = useRecoilState(PlacesState);
+  const navigate = useNavigate();
 
   const fetchNearbyPlaces = async () => {
     try {
@@ -15,15 +17,17 @@ const NearBy = () => {
         {
           latitude: 37.4985163075707,
           longitude: 126.939014238644,
+        },
+        {
           headers: {
             'Content-Type': 'application/json',
           },
         },
       );
-      if (response.data.code === '200' && response.data.isSuccess) {
-        setPlaces(response.data.data);
+      if (response.data) {
+        setPlaces(response.data);
       } else {
-        console.error('Failed to fetch places:', response.data.message);
+        console.error('Failed to fetch places:', response);
       }
     } catch (error) {
       console.error('Error fetching nearby places:', error);
@@ -37,12 +41,17 @@ const NearBy = () => {
   return (
     <div>
       <MapComponent />
-      <button onClick={fetchNearbyPlaces}>출력</button>
+      <S.PlaceLabel>가장 가까운 구장</S.PlaceLabel>
       <S.PlacesList>
-        {places.map((place, index) => (
-          <S.PlaceItem key={index}>
-            <S.PlaceName>{place.name}</S.PlaceName>
+        {places.map(place => (
+          <S.PlaceItem key={place.placeId}>
             <S.PlaceDistance>{place.distance}</S.PlaceDistance>
+            <S.PlaceName>{place.name}</S.PlaceName>
+            <S.MapBtn
+              onClick={() => navigate(`/places/${place.placeId}/matches`)}
+            >
+              매치 정보
+            </S.MapBtn>
           </S.PlaceItem>
         ))}
       </S.PlacesList>

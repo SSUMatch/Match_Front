@@ -39,6 +39,10 @@ const PlaceMatches: React.FC = () => {
     fetchMatches();
   }, [placeId]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <L.ListContainer>
       {Object.keys(matches).map(date => (
