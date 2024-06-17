@@ -26,5 +26,6 @@ const Color = {
   MildBlue: '#ECF2FF',
   LightBlue: '#C9DAFF',
   Gold: '#FFCF51',
+  WinBG: '#FFF1F3',
 } as const;
 export default Color;

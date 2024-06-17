@@ -2,6 +2,10 @@ import styled from '@emotion/styled';
 import Color from '@/styles/Color.ts';
 import Font from '@/styles/Font.ts';
 
+interface GameInfoProps {
+  isWin: boolean;
+}
+
 export const AppContainer = styled.div`
   background-color: ${Color.MildBlue};
   border-radius: 1rem;
@@ -30,9 +34,9 @@ export const GraphButton = styled.button`
   }
 `;
 
-export const GameInfo = styled.div`
+export const GameInfo = styled.div<GameInfoProps>`
   display: flex;
-  background-color: ${Color.LightBlue};
+  background-color: ${({isWin}) => (isWin ? Color.WinBG : Color.LightBlue)};
   flex-direction: row;
   margin-bottom: 20px;
   cursor: pointer;

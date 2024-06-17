@@ -103,7 +103,10 @@ const MatchList: React.FC = () => {
       {gameData.length > 0 &&
         gameData.map((game, index) => (
           <div key={index}>
-            <S.GameInfo onClick={() => toggleDropdown(index)}>
+            <S.GameInfo
+              isWin={game.isWin}
+              onClick={() => toggleDropdown(index)}
+            >
               <S.InfoWrap>
                 <S.InfoItem>
                   <S.DateValue>{game.date}</S.DateValue>
