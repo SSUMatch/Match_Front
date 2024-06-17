@@ -49,13 +49,13 @@ const MapComponent: React.FC = () => {
           map.setBounds(bounds);
 
           // 마커 설정
-          data.forEach(place => {
-            new window.kakao.maps.Marker({
-              map,
-              position: new window.kakao.maps.LatLng(place.y, place.x),
-              title: place.place_name,
-            });
-          });
+          // data.forEach(place => {
+          //   new window.kakao.maps.Marker({
+          //     map,
+          //     position: new window.kakao.maps.LatLng(place.y, place.x),
+          //     title: place.place_name,
+          //   });
+          // });
         }
       });
     } else {
