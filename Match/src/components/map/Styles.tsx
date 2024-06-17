@@ -44,14 +44,14 @@ export const MapContainer = styled.div`
   height: 66rem;
 `;
 
-export const PlacesList = styled.ul`
+export const PlacesList = styled.div`
   list-style-type: none;
   padding: 0;
   width: 100%;
   height: 112rem;
 `;
 
-export const PlaceItem = styled.li`
+export const PlaceItem = styled.div`
   display: flex;
   align-items: center;
   border-bottom: 0.1rem solid ${Color.Gray20};
