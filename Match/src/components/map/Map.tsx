@@ -1,81 +1,74 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useRecoilState} from 'recoil';
 import axios from 'axios';
 import {PlacesState} from '@/recoil/place/States';
 import * as S from './Styles';
 
 const MapComponent: React.FC = () => {
+  const apiKey = import.meta.env.VITE_KAKAO_MAPS_API_KEY;
   const [places, setPlaces] = useRecoilState(PlacesState);
+  const [map, setMap] = useState<kakao.maps.Map | null>(null);
 
   useEffect(() => {
-    const initMap = () => {
-      const mapContainer = document.getElementById('map'); // 지도를 표시할 div
-      const mapOption = {
-        center: new window.kakao.maps.LatLng(
-          37.4985163075707,
-          126.939014238644,
-        ), // 하드 코딩된 중심좌표
-        level: 3, // 지도의 확대 레벨
-      };
+    const script = document.createElement('script');
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&autoload=false&libraries=services`;
+    script.onload = () => {
+      kakao.maps.load(() => {
+        const mapContainer = document.getElementById('map'); // 지도를 표시할 div
+        const mapOption = {
+          center: new kakao.maps.LatLng(37.4985163075707, 126.939014238644), // 중심 좌표
+          level: 3, // 확대 레벨
+        };
+        const map = new kakao.maps.Map(mapContainer, mapOption);
+        setMap(map);
 
-      const map = new window.kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+        // 초기 위치 설정 및 주변 장소 검색
+        const lat = 37.4985163075707;
+        const lon = 126.939014238644;
+        const locPosition = new kakao.maps.LatLng(lat, lon);
+        map.setCenter(locPosition);
 
-      const lat = 37.4985163075707;
-      const lon = 126.939014238644;
-
-      const locPosition = new window.kakao.maps.LatLng(lat, lon);
-      map.setCenter(locPosition);
-
-      axios
-        .post('https://kusitms28.store/places/nearby', {
-          latitude: lat,
-          longitude: lon,
-        })
-        .then(response => {
-          if (response.data.code === '200' && response.data.isSuccess) {
-            console.log('API Response:', response.data.data); // 데이터 확인
-            setPlaces(response.data.data);
-          }
-        })
-        .catch(error => {
-          console.error('Error fetching nearby places:', error);
-        });
+        axios
+          .post('https://kusitms28.store/places/nearby', {
+            latitude: lat,
+            longitude: lon,
+          })
+          .then(response => {
+            if (response.data.code === '200' && response.data.isSuccess) {
+              setPlaces(response.data.data);
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching nearby places:', error);
+          });
+      });
     };
-
-    if (window.kakao && window.kakao.maps) {
-      window.kakao.maps.load(initMap);
-    } else {
-      // Kakao map script가 로드되지 않은 경우, 로드된 후 initMap 실행
-      const script = document.createElement('script');
-      script.src =
-        '//dapi.kakao.com/v2/maps/sdk.js?appkey=c84b897b954b779dee56f5cc8b541cad&autoload=false&libraries=services';
-      script.onload = () => window.kakao.maps.load(initMap);
-      document.head.appendChild(script);
-    }
-  }, [setPlaces]);
+    document.head.appendChild(script);
+  }, [apiKey, setPlaces]);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (window.kakao && window.kakao.maps && window.kakao.maps.services) {
+    if (map && kakao.maps.services) {
       const keyword = (e.target as any).elements.keyword.value;
-      const ps = new window.kakao.maps.services.Places();
+      const ps = new kakao.maps.services.Places();
 
-      ps.keywordSearch(keyword, (data: any[], status: string) => {
-        if (status === window.kakao.maps.services.Status.OK) {
-          const bounds = new window.kakao.maps.LatLngBounds();
-          for (let i = 0; i < data.length; i++) {
-            bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x));
-          }
-          const mapContainer = document.getElementById('map');
-          const map = new window.kakao.maps.Map(mapContainer, {
-            center: new window.kakao.maps.LatLng(
-              37.4985163075707,
-              126.939014238644,
-            ),
-            level: 3,
+      ps.keywordSearch(keyword, (data, status) => {
+        if (status === kakao.maps.services.Status.OK) {
+          const bounds = new kakao.maps.LatLngBounds();
+          data.forEach(place => {
+            bounds.extend(new kakao.maps.LatLng(place.y, place.x));
           });
           map.setBounds(bounds);
+
+          // 마커 설정
+          data.forEach(place => {
+            new kakao.maps.Marker({
+              map,
+              position: new kakao.maps.LatLng(place.y, place.x),
+              title: place.place_name,
+            });
+          });
         }
       });
     } else {
