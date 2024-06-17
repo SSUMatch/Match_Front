@@ -15,8 +15,7 @@ export const AppContainer = styled.div`
 export const GraphButton = styled.button`
   display: block;
   //margin: 0 auto 10px auto;
-  margin-left: auto;
-  margin-right: 1rem;
+  margin: 1.5rem 1rem 1.5rem auto;
   padding: 10px 20px;
   font-size: ${Font.SIZE.BODY1};
   font-weight: ${Font.WEIGHT.BOLD};

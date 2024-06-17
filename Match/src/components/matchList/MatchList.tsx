@@ -99,7 +99,7 @@ const MatchList: React.FC = () => {
 
   return (
     <S.AppContainer>
-      <S.GraphButton onClick={handleNavigate} />
+      <S.GraphButton onClick={handleNavigate}>그래프</S.GraphButton>
       {gameData.length > 0 &&
         gameData.map((game, index) => (
           <div key={index}>
