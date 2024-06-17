@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import * as L from './Styles';
 import MatchStatus from '@/components/match/matchstatus/MatchStatus';
 // import {MatchListTypes} from '@/recoil/match/Types';
@@ -21,6 +21,7 @@ interface MatchResponse {
 const PlaceMatches: React.FC = () => {
   const {placeId} = useParams<{placeId: string}>();
   const [matches, setMatches] = useState<MatchResponse>({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMatches = async () => {
@@ -43,6 +44,9 @@ const PlaceMatches: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const handleMatchClick = (matchId: number) => {
+    navigate(`/match/detail/${matchId}`);
+  };
   return (
     <L.ListContainer>
       {Object.keys(matches).map(date => (
@@ -57,7 +61,7 @@ const PlaceMatches: React.FC = () => {
               </L.TitleWrap>
               <MatchStatus
                 status={match.status as '신청' | '마감 임박' | '마감'}
-                onClick={() => {}}
+                onClick={() => handleMatchClick(match.matchId)}
               />
             </L.MatchItem>
           ))}
