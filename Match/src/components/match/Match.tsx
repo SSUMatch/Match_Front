@@ -1,11 +1,12 @@
-import {useEffect, useState} from 'react';
-import axios from 'axios';
+import {useState} from 'react';
+import {useQuery} from 'react-query';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
 import {useNavigate} from 'react-router-dom';
 import {format} from 'date-fns';
 import {MatchListState, SelectedDateState} from '@/recoil/match/States';
 import * as L from './Styles';
 import MatchStatus from './matchstatus/MatchStatus';
+import {fetchMatches} from '@/apis/apis';
 
 const Match = () => {
   const matches = useRecoilValue(MatchListState);
@@ -15,31 +16,16 @@ const Match = () => {
   const [page, setPage] = useState(0);
   const take = 5; // 한 페이지에 나올 항목의 수
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('https://kusitms28.store/match', {
-          params: {
-            page,
-            take,
-            date: format(selectedDate, 'yyyy-MM-dd'),
-          },
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        if (response.data.code === '200' && response.data.isSuccess) {
-          setMatches(response.data.data);
-        } else {
-          console.error('Failed to fetch data:', response.data.message);
-        }
-      } catch (error) {
-        console.error('Error fetching data: ', error);
-      }
-    };
-
-    fetchData();
-  }, [selectedDate, page, setMatches]);
+  useQuery(
+    ['matches', page, selectedDate],
+    () => fetchMatches(page, take, format(selectedDate, 'yyyy-MM-dd')),
+    {
+      keepPreviousData: true,
+      onSuccess: data => {
+        setMatches(data);
+      },
+    },
+  );
 
   const handleStatusClick = (matchId: number) => {
     navigate(`/match/detail/${matchId}`);
